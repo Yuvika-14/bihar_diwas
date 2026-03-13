@@ -1,0 +1,19 @@
+{
+  "id": "bihar-diwas-quiz",
+  "name": "Bihar Diwas Heritage Quiz",
+  "short_name": "Bihar Quiz",
+  "description": "Interactive Bihar Diwas quiz exploring Bihar's landmarks, culture and history.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d0a1f",
+  "theme_color": "#1a0a3d",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
