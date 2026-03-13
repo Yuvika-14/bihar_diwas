@@ -53,11 +53,21 @@
   }
 
   .kbc-clip {
-    clip-path: polygon(3rem 0, calc(100% - 3rem) 0, 100% 50%, calc(100% - 3rem) 100%, 3rem 100%, 0% 50%);
+    clip-path: polygon(1.5rem 0, calc(100% - 1.5rem) 0, 100% 50%, calc(100% - 1.5rem) 100%, 1.5rem 100%, 0% 50%);
+  }
+  @media (min-width: 768px) {
+    .kbc-clip {
+      clip-path: polygon(3rem 0, calc(100% - 3rem) 0, 100% 50%, calc(100% - 3rem) 100%, 3rem 100%, 0% 50%);
+    }
   }
 
   .kbc-clip-option {
-    clip-path: polygon(2rem 0, calc(100% - 2rem) 0, 100% 50%, calc(100% - 2rem) 100%, 2rem 100%, 0% 50%);
+    clip-path: polygon(1.2rem 0, calc(100% - 1.2rem) 0, 100% 50%, calc(100% - 1.2rem) 100%, 1.2rem 100%, 0% 50%);
+  }
+  @media (min-width: 768px) {
+    .kbc-clip-option {
+      clip-path: polygon(2rem 0, calc(100% - 2rem) 0, 100% 50%, calc(100% - 2rem) 100%, 2rem 100%, 0% 50%);
+    }
   }
 }
 

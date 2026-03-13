@@ -78,22 +78,22 @@ const QuizScreen = ({ questions, onComplete }) => {
     <div className="flex flex-col h-full w-full mx-auto py-2">
       
       {/* Header: Progress and Timer */}
-      <div className="flex justify-between items-center mb-8 px-2 font-orbitron">
+      <div className="flex justify-between items-center mb-6 md:mb-8 px-2 font-orbitron">
         <motion.div 
           initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-3 bg-premium-800/80 backdrop-blur-xl px-8 py-3 rounded-md border-t-2 border-l-2 border-premium-accent/50 shadow-[4px_4px_0px_rgba(0,255,204,0.3)]"
+          className="flex items-center gap-2 md:gap-3 bg-premium-800/80 backdrop-blur-xl px-4 md:px-8 py-2 md:py-3 rounded-md border-t-2 border-l-2 border-premium-accent/50 shadow-[4px_4px_0px_rgba(0,255,204,0.3)]"
         >
-          <span className="text-xl font-bold tracking-[0.2em] uppercase text-premium-accent">
-            Question <span className="text-white text-2xl">{currentQuestionIndex + 1}</span><span className="text-white/40">/{questions.length}</span>
+          <span className="text-sm md:text-xl font-bold tracking-[0.1em] md:tracking-[0.2em] uppercase text-premium-accent">
+            Q<span className="hidden md:inline">UESTION</span> <span className="text-white text-lg md:text-2xl">{currentQuestionIndex + 1}</span><span className="text-white/40 text-xs md:text-base">/{questions.length}</span>
           </span>
         </motion.div>
         
         <motion.div 
           initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}
-          className={`flex items-center gap-3 px-6 py-3 rounded-md border-t-2 border-l-2 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] transition-all duration-300 ${timeLeft <= 5 ? 'bg-red-900/80 border-red-500 shadow-[4px_4px_0px_rgba(255,0,0,0.5)] text-red-100 animate-pulse' : 'bg-premium-800/80 border-premium-accent/50 shadow-[4px_4px_0px_rgba(0,255,204,0.3)] text-white/90'}`}
+          className={`flex items-center gap-2 md:gap-3 px-3 md:px-6 py-2 md:py-3 rounded-md border-t-2 border-l-2 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] transition-all duration-300 ${timeLeft <= 5 ? 'bg-red-900/80 border-red-500 shadow-[4px_4px_0px_rgba(255,0,0,0.5)] text-red-100 animate-pulse' : 'bg-premium-800/80 border-premium-accent/50 shadow-[4px_4px_0px_rgba(0,255,204,0.3)] text-white/90'}`}
         >
-          <Clock className={`w-5 h-5 ${timeLeft <= 5 ? 'text-red-400' : 'text-premium-accent'}`} />
-          <span className="text-2xl font-bold w-12 text-center tracking-wider">
+          <Clock className={`w-4 h-4 md:w-5 md:h-5 ${timeLeft <= 5 ? 'text-red-400' : 'text-premium-accent'}`} />
+          <span className="text-lg md:text-2xl font-bold w-6 md:w-12 text-center tracking-wider">
             {timeLeft}s
           </span>
         </motion.div>
@@ -141,7 +141,7 @@ const QuizScreen = ({ questions, onComplete }) => {
              {/* Box Wrapper for Gold Border effect using clip-path */}
              <div className="relative w-full max-w-3xl p-[2px] bg-gradient-to-r from-[#B8860B] via-[#FFE4B5] to-[#B8860B] kbc-clip shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                 {/* Inner Content Box */}
-                <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-3 px-12 md:px-16 text-center flex items-center justify-center min-h-[70px] md:min-h-[85px]">
+                <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-3 px-8 md:px-16 text-center flex items-center justify-center min-h-[70px] md:min-h-[85px]">
                   <h2 className="text-base md:text-xl lg:text-2xl font-bold leading-relaxed text-white font-rajdhani tracking-wide">
                     {currentQuestion.question}
                   </h2>
@@ -200,7 +200,7 @@ const QuizScreen = ({ questions, onComplete }) => {
                               if (selectedAnswer === null) playSound('hover');
                           }}
                           onClick={() => handleAnswerClick(option)}
-                          className={`relative w-full h-full kbc-clip-option ${innerBg} ${selectedAnswer === null ? 'hover:bg-[#FBBF24] hover:text-black hover:bg-none' : ''} py-2 md:py-3 px-10 md:px-14 text-left transition-all duration-300 flex items-center justify-between`}
+                          className={`relative w-full h-full kbc-clip-option ${innerBg} ${selectedAnswer === null ? 'hover:bg-[#FBBF24] hover:text-black hover:bg-none' : ''} py-2 md:py-3 px-6 md:px-12 text-left transition-all duration-300 flex items-center justify-between`}
                         >
                           <div className={`flex items-center gap-2 md:gap-3 w-full ${textColor} ${selectedAnswer === null ? 'group-hover:text-black' : ''}`}>
                             <span className={`text-base md:text-lg font-black font-orbitron ${labelColor} ${selectedAnswer === null ? 'group-hover:text-black' : ''} transition-colors whitespace-nowrap`}>
@@ -210,7 +210,7 @@ const QuizScreen = ({ questions, onComplete }) => {
                                {option}
                             </span>
                           </div>
-                          {StatusIcon && <div className="z-10">{StatusIcon}</div>}
+                          {StatusIcon && <div className="z-10 shrink-0 ml-2">{StatusIcon}</div>}
                         </button>
                      </div>
                   </motion.div>
