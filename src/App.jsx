@@ -29,7 +29,7 @@ function App() {
   };
 
   const restartQuiz = () => {
-    setGameState('start');
+    startQuiz();
   };
 
   return (

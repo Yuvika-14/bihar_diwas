@@ -14,12 +14,18 @@ import arya from '../assets/images/arya.png';
 import kosi from '../assets/images/kosi.png';
 import barbar from '../assets/images/barbar.png';
 import tomb from '../assets/images/tomb.png';
-const placeholder = "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepy1TEY_xcZeH5tm76RdoalZlmnt7w3qTlSrBX0THgxT_fAiIxxZeBxFkhJO3BMOrJELYa1xZWUkq3yOzYxmMzMukC0VwcQc7z0YLs0PNnZaPpXUNfVUldh3E391pR7oqxVCNUS6g=s294-w294-h220-k-no"
-const placeholder2 = "https://lh3.googleusercontent.com/gps-cs-s/AHVAwepy1TEY_xcZeH5tm76RdoalZlmnt7w3qTlSrBX0THgxT_fAiIxxZeBxFkhJO3BMOrJELYa1xZWUkq3yOzYxmMzMukC0VwcQc7z0YLs0PNnZaPpXUNfVUldh3E391pR7oqxVCNUS6g=s294-w294-h220-k-no";
-const placeholder3 = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT5tSpGp0LJbpwV-Li7e-9Y7cY7hCWsIa-PLzCXQRGbdaaID4Ct";
-const placeholder4 = "https://lh3.googleusercontent.com/gps-cs-s/AHVAweoEDu3G1vC8IbHgfVnIe1rcfgcnG4YCMLuhzTequLq4AR6DruwUD2VroMRXtmKLBwjpxyMWR-BKLtg7CROAm0Vfe_d5OdRg_6dKeytGwdGWHJyDTJa-uGAwLFBKLT7ISsaC7GsSIA=w260-h175-n-k-no";
-const placeholder5 = "https://images.unsplash.com/photo-1564507592224-2fc302e1b12b?auto=format&fit=crop&q=80&w=800&h=600";
-const placeholder6 = "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&q=80&w=800&h=600";
+import img1 from '../assets/images/bihar_heritage_1_1773389967069.png';
+import img2 from '../assets/images/bihar_heritage_2_1773389982812.png';
+import img3 from '../assets/images/bihar_heritage_3_1773390021723.png';
+import img4 from '../assets/images/bihar_heritage_4_1773390060942.png';
+import img5 from '../assets/images/bihar_heritage_5_1773390077247.png';
+
+const placeholder = img1;
+const placeholder2 = img2;
+const placeholder3 = img3;
+const placeholder4 = img4;
+const placeholder5 = img5;
+const placeholder6 = img2; // Reused one since we only made 5
 
 
 const qPool = [

@@ -29,38 +29,38 @@ const ResultScreen = ({ score, total, onRestart }) => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-        className="mb-8 md:mb-12 relative shrink-0"
+        className="mb-4 md:mb-6 relative shrink-0"
       >
         <div className="absolute inset-0 bg-premium-accent/20 blur-[100px] -z-10 rounded-full"></div>
-        <div className="relative inline-block mb-6 md:mb-8">
-           <Trophy className="w-24 h-24 md:w-32 md:h-32 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
+        <div className="relative inline-block mb-4 md:mb-6">
+           <Trophy className="w-16 h-16 md:w-24 md:h-24 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
            <motion.div 
              animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
              className="absolute -inset-4 border-2 border-dashed border-arcade-pink/50 rounded-full shadow-[0_0_15px_rgba(255,0,255,0.4)]"
            ></motion.div>
         </div>
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-orbitron font-black text-white mb-4 tracking-tight uppercase text-glow">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-orbitron font-black text-white mb-2 tracking-tight uppercase text-glow">
           {percentage >= 50 ? "Mission Cleared" : "Game Over"}
         </h2>
-        <p className="text-xl md:text-2xl text-arcade-pink font-bold tracking-widest uppercase">{message}</p>
+        <p className="text-lg md:text-xl text-arcade-pink font-bold tracking-widest uppercase">{message}</p>
       </motion.div>
 
       <motion.div 
-        className="relative glass-card px-8 md:px-16 py-8 md:py-12 mb-10 md:mb-16 flex flex-col items-center overflow-hidden group border-b-4 border-r-4 border-premium-accent/50 rounded-xl shrink-0"
+        className="relative glass-card px-8 md:px-12 py-6 md:py-8 mb-8 md:mb-10 flex flex-col items-center overflow-hidden group border-b-2 border-r-2 border-premium-accent/50 rounded-xl shrink-0"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent opacity-80"></div>
         
-        <div className="flex items-center gap-3 md:gap-4 mb-2 shrink-0">
-           {percentage >= 50 ? <Star className="text-premium-accent w-6 h-6 md:w-8 md:h-8"/> : <ShieldAlert className="text-red-500 w-6 h-6 md:w-8 md:h-8"/>}
-           <span className="text-white/60 uppercase tracking-[0.4em] font-bold text-xs md:text-sm">Final Score</span>
-           {percentage >= 50 ? <Star className="text-premium-accent w-6 h-6 md:w-8 md:h-8"/> : <ShieldAlert className="text-red-500 w-6 h-6 md:w-8 md:h-8"/>}
+        <div className="flex items-center gap-2 md:gap-3 mb-2 shrink-0">
+           {percentage >= 50 ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6"/> : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6"/>}
+           <span className="text-white/60 uppercase tracking-[0.4em] font-bold text-xs">Final Score</span>
+           {percentage >= 50 ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6"/> : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6"/>}
         </div>
         
-        <div className="text-7xl md:text-9xl font-orbitron font-bold text-white drop-shadow-[0_0_20px_rgba(0,255,204,0.4)] tabular-nums tracking-tighter mt-4 shrink-0">
-          {score} <span className="text-4xl md:text-5xl text-white/30 font-light">/ {total}</span>
+        <div className="text-6xl md:text-7xl font-orbitron font-bold text-white drop-shadow-[0_0_20px_rgba(0,255,204,0.4)] tabular-nums tracking-tighter mt-2 shrink-0">
+          {score} <span className="text-3xl md:text-4xl text-white/30 font-light">/ {total}</span>
         </div>
         
         {/* Scanline overlay for card */}
