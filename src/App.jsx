@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05050A] text-white overflow-hidden relative font-sans select-none">
+    <div className="min-h-screen bg-[#05050A] text-white overflow-x-hidden overflow-y-auto relative font-sans select-none">
       
       {/* High-End Cinematic Background */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -56,7 +56,7 @@ function App() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
       </div>
 
-      <div className="relative z-10 w-full h-screen flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
+      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
         <AnimatePresence mode="wait">
           {gameState === 'start' && (
             <motion.div key="start" className="w-full max-w-5xl h-full flex items-center justify-center" exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }} transition={{ duration: 0.5 }}>

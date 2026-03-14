@@ -4,8 +4,9 @@ import { Trophy, RefreshCw, Star, ShieldAlert } from 'lucide-react';
 import { playSound } from '../utils/audio';
 
 const ResultScreen = ({ score, total, onRestart }) => {
+
   const percentage = (score / total) * 100;
-  
+
   let message = "";
   if (percentage === 100) message = "Perfect Run! Legend Status Achieved.";
   else if (percentage >= 80) message = "High Score! Great Knowledge.";
@@ -13,59 +14,84 @@ const ResultScreen = ({ score, total, onRestart }) => {
   else message = "Mission Failed. Try Again.";
 
   useEffect(() => {
-    // Play sound immediately on mount
     if (percentage >= 50) playSound('win');
     else playSound('wrong');
   }, [percentage]);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex flex-col items-center justify-center min-h-[80vh] py-8 text-center px-4 w-full font-rajdhani"
+      className="flex flex-col items-center justify-center min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] py-6 md:py-8 text-center px-4 w-full max-w-[1200px] mx-auto font-rajdhani"
     >
+
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
         className="mb-4 md:mb-6 relative shrink-0"
       >
+
         <div className="absolute inset-0 bg-premium-accent/20 blur-[100px] -z-10 rounded-full"></div>
+
         <div className="relative inline-block mb-4 md:mb-6">
-           <Trophy className="w-16 h-16 md:w-24 md:h-24 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
-           <motion.div 
-             animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-             className="absolute -inset-4 border-2 border-dashed border-arcade-pink/50 rounded-full shadow-[0_0_15px_rgba(255,0,255,0.4)]"
-           ></motion.div>
+
+          <Trophy className="w-16 h-16 md:w-24 md:h-24 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
+
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="absolute -inset-4 border-2 border-dashed border-arcade-pink/50 rounded-full shadow-[0_0_15px_rgba(255,0,255,0.4)]"
+          />
+
         </div>
+
         <h2 className="text-3xl md:text-5xl lg:text-6xl font-orbitron font-black text-white mb-2 tracking-tight uppercase text-glow">
           {percentage >= 50 ? "Mission Cleared" : "Game Over"}
         </h2>
-        <p className="text-lg md:text-xl text-arcade-pink font-bold tracking-widest uppercase">{message}</p>
+
+        <p className="text-lg md:text-xl text-arcade-pink font-bold tracking-widest uppercase">
+          {message}
+        </p>
+
       </motion.div>
 
-      <motion.div 
-        className="relative glass-card px-8 md:px-12 py-6 md:py-8 mb-8 md:mb-10 flex flex-col items-center overflow-hidden group border-b-2 border-r-2 border-premium-accent/50 rounded-xl shrink-0"
+
+      <motion.div
+        className="relative glass-card px-6 md:px-12 py-6 md:py-8 mb-6 md:mb-10 flex flex-col items-center overflow-hidden group border-b-2 border-r-2 border-premium-accent/50 rounded-xl shrink-0 w-full max-w-[500px]"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
+
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent opacity-80"></div>
-        
+
         <div className="flex items-center gap-2 md:gap-3 mb-2 shrink-0">
-           {percentage >= 50 ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6"/> : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6"/>}
-           <span className="text-white/60 uppercase tracking-[0.4em] font-bold text-xs">Final Score</span>
-           {percentage >= 50 ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6"/> : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6"/>}
+
+          {percentage >= 50
+            ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6" />
+            : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6" />}
+
+          <span className="text-white/60 uppercase tracking-[0.4em] font-bold text-xs">
+            Final Score
+          </span>
+
+          {percentage >= 50
+            ? <Star className="text-premium-accent w-5 h-5 md:w-6 md:h-6" />
+            : <ShieldAlert className="text-red-500 w-5 h-5 md:w-6 md:h-6" />}
+
         </div>
-        
+
         <div className="text-6xl md:text-7xl font-orbitron font-bold text-white drop-shadow-[0_0_20px_rgba(0,255,204,0.4)] tabular-nums tracking-tighter mt-2 shrink-0">
-          {score} <span className="text-3xl md:text-4xl text-white/30 font-light">/ {total}</span>
+          {score}
+          <span className="text-3xl md:text-4xl text-white/30 font-light"> / {total}</span>
         </div>
-        
-        {/* Scanline overlay for card */}
+
         <div className="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACAQMAAACzO1S7AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObb/QAAABJJREFUCNdjYGD4/wDE4P8BAQAZfAP9u981uQAAAABJRU5ErkJggg==')] opacity-10 pointer-events-none mix-blend-overlay"></div>
+
       </motion.div>
+
 
       <motion.button
         initial={{ opacity: 0, y: 20 }}
@@ -73,14 +99,20 @@ const ResultScreen = ({ score, total, onRestart }) => {
         transition={{ delay: 0.9, duration: 0.5 }}
         onMouseEnter={() => playSound('hover')}
         onClick={() => {
-            playSound('click');
-            onRestart();
+          playSound('click');
+          onRestart();
         }}
-        className="arcade-btn px-12 py-5 text-2xl flex items-center gap-4 shadow-[0_0_20px_rgba(0,255,204,0.2)]"
+        className="arcade-btn px-10 md:px-12 py-4 md:py-5 text-xl md:text-2xl flex items-center gap-3 md:gap-4 shadow-[0_0_20px_rgba(0,255,204,0.2)]"
       >
-        <RefreshCw className="w-7 h-7" />
-        <span className="animate-pulse">Play Again</span>
+
+        <RefreshCw className="w-6 h-6 md:w-7 md:h-7" />
+
+        <span className="animate-pulse">
+          Play Again
+        </span>
+
       </motion.button>
+
     </motion.div>
   );
 };
