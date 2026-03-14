@@ -10,13 +10,22 @@ function App() {
   const [score, setScore] = useState(0);
   const [selectedSet, setSelectedSet] = useState(null);
 
+  const preloadImages = (questions) => {
+  questions.forEach((q) => {
+    const img = new Image();
+    img.src = q.image;
+  });
+};
+
   const startQuiz = () => {
     // Pick a random set out of the 4
     const randomSetIndex = Math.floor(Math.random() * questionSets.length);
     const chosenSet = questionSets[randomSetIndex];
+
     
     // Shuffle the 10 questions within that set without mutating the original
     const shuffledQuestions = shuffle([...chosenSet.questions]);
+         preloadImages(shuffledQuestions);
     
     setSelectedSet({ title: chosenSet.title, questions: shuffledQuestions });
     setScore(0);
@@ -55,7 +64,7 @@ function App() {
         {/* Subtle grid pattern for texture */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"></div>
       </div>
-
+    
       <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-8 lg:p-12">
         <AnimatePresence mode="wait">
           {gameState === 'start' && (
