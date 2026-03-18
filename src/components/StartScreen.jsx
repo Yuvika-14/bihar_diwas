@@ -165,8 +165,8 @@ const Startscreen = ({ onStart }) => {
             fontSize: 'clamp(16px,2.5vw,28px)'
           }}
         >
-          Match Bihar's famous landmarks, food & culture! <br />
-          Drag items on this touchscreen to connect them.
+         Test your knowledge of Bihar's famous landmarks, food & culture! <br />
+Answer the questions and win like KBC!
         </motion.p>
 
         {/* Steps */}

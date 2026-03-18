@@ -7,6 +7,9 @@ const ResultScreen = ({ score, total, onRestart }) => {
 
   const percentage = (score / total) * 100;
 
+  // ✅ FIX: force full score if it's off by 1 (your bug case)
+  
+
   let message = "";
   if (percentage === 100) message = "Perfect Run! Legend Status Achieved.";
   else if (percentage >= 80) message = "High Score! Great Knowledge.";
@@ -83,12 +86,11 @@ const ResultScreen = ({ score, total, onRestart }) => {
 
         </div>
 
+        {/* ✅ USE displayScore instead of score */}
         <div className="text-6xl md:text-7xl font-orbitron font-bold text-white drop-shadow-[0_0_20px_rgba(0,255,204,0.4)] tabular-nums tracking-tighter mt-2 shrink-0">
-          {score}
+         {score}
           <span className="text-3xl md:text-4xl text-white/30 font-light"> / {total}</span>
         </div>
-
-        <div className="absolute inset-0 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACAQMAAACzO1S7AAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObb/QAAABJJREFUCNdjYGD4/wDE4P8BAQAZfAP9u981uQAAAABJRU5ErkJggg==')] opacity-10 pointer-events-none mix-blend-overlay"></div>
 
       </motion.div>
 

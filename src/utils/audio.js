@@ -38,6 +38,17 @@ export const playSound = (type) => {
         osc.stop(now + 0.1);
         break;
 
+      case 'tick':
+        // Smooth, light digital tick
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(400, now);
+        osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+        gainNode.gain.setValueAtTime(0.05, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+        break;
+
       case 'correct':
         // Happy ascending 8-bit arpeggio
         osc.type = 'triangle';

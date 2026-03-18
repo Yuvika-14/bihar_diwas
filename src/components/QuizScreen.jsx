@@ -8,7 +8,7 @@ const QuizScreen = ({ questions, onComplete }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(10);
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -35,7 +35,7 @@ const QuizScreen = ({ questions, onComplete }) => {
     setIsAnimating(true);
 
     setTimeout(() => {
-      moveToNextQuestion();
+      moveToNextQuestion(score);
     }, 2500);
   };
 
@@ -45,32 +45,31 @@ const QuizScreen = ({ questions, onComplete }) => {
     setSelectedAnswer(option);
     setIsAnimating(true);
 
+    let nextScore = score;
     if (option === currentQuestion.correctAnswer) {
       playSound('correct');
       setScore((prev) => prev + 1);
+      nextScore = score + 1;
     } else {
       playSound('wrong');
     }
 
     setTimeout(() => {
-      moveToNextQuestion();
+      moveToNextQuestion(nextScore);
     }, 2500);
   };
 
-  const moveToNextQuestion = () => {
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-    const currentScore = score + (isCorrect ? 1 : 0);
-
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-      setSelectedAnswer(null);
-      setIsAnimating(false);
-      setTimeLeft(15);
-      if (isCorrect) setScore(currentScore);
-    } else {
-      onComplete(currentScore);
-    }
-  };
+ const moveToNextQuestion = (finalScore = score) => {
+  if (currentQuestionIndex < questions.length - 1) {
+    setCurrentQuestionIndex((prev) => prev + 1);
+    setSelectedAnswer(null);
+    setIsAnimating(false);
+    setTimeLeft(10);
+  } else {
+    // ✅ use latest score directly
+    onComplete(finalScore);
+  }
+};
 
   return (
     <div className="flex flex-col h-full w-full max-w-[1800px] mx-auto py-2 px-2 sm:px-4 md:px-6">
