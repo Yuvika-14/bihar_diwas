@@ -131,10 +131,10 @@ const Startscreen = ({ onStart }) => {
           </motion.div>
 
           <motion.h1
-            className="leading-none mb-2"
+            className="leading-none mb-1 sm:mb-2"
             style={{
               fontFamily: 'var(--font-game)',
-              fontSize: 'clamp(50px,10vw,140px)',
+              fontSize: 'clamp(40px,10vh,100px)',
               color: '#f5a623'
             }}
           >
@@ -145,9 +145,9 @@ const Startscreen = ({ onStart }) => {
         <motion.h2
           style={{
             fontFamily: 'var(--font-pixel)',
-            fontSize: 'clamp(12px,3vw,24px)',
+            fontSize: 'clamp(12px,4vh,20px)',
             color: '#22d3ee',
-            letterSpacing: '6px'
+            letterSpacing: '4px'
           }}
         >
           FUN GAME INTERACTIVE
@@ -155,10 +155,11 @@ const Startscreen = ({ onStart }) => {
 
         {/* Description */}
         <motion.p
-          className="mt-2 sm:mt-6 max-w-2xl text-white/80"
+          className="mt-2 sm:mt-4 max-w-xl text-white/80"
           style={{
             fontFamily: 'var(--font-game)',
-            fontSize: 'clamp(14px,2.5vw,24px)'
+            fontSize: 'clamp(14px,3vh,22px)',
+            lineHeight: '1.2'
           }}
         >
          Test your knowledge of Bihar's famous landmarks, food & culture! <br />
@@ -168,11 +169,11 @@ Answer the questions and win like KBC!
         {/* Steps */}
        
         {/* Play Button */}
-        <motion.div className="relative mt-4 sm:mt-8 lg:mt-12">
+        <motion.div className="relative mt-3 sm:mt-5 lg:mt-6">
           <button
             onClick={handlePlay}
-            className="relative flex items-center justify-center gap-4
-            w-[240px] h-[60px] sm:w-[300px] sm:h-[80px] lg:w-[380px] lg:h-[90px]
+            className="relative flex items-center justify-center gap-3
+            w-[200px] h-[50px] sm:w-[240px] sm:h-[60px] lg:w-[280px] lg:h-[70px]
             rounded-full transition-transform hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, #f5a623 0%, #d97706 100%)',
@@ -188,7 +189,7 @@ Answer the questions and win like KBC!
                 fontFamily: 'var(--font-pixel)',
                  color: '#000',
                      fontWeight: 'bold',
-                fontSize: 'clamp(16px,2vw,24px)'
+                fontSize: 'clamp(14px,2.5vh,20px)'
               }}
             >
               TAP TO START
@@ -197,7 +198,7 @@ Answer the questions and win like KBC!
         </motion.div>
 
         {/* Footer */}
-        <motion.div className="mt-4 sm:mt-6 lg:mt-8 flex items-center gap-2 text-white/40 text-xs sm:text-sm">
+        <motion.div className="mt-2 sm:mt-4 lg:mt-6 flex items-center justify-center gap-2 text-white/40 text-xs sm:text-sm">
           <GiStarMedal size={16} />
           <span>Complete the challenge to win a prize!</span>
           <GiStarMedal size={16} />

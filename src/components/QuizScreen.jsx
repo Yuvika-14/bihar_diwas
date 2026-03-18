@@ -85,7 +85,7 @@ const QuizScreen = ({ questions, onComplete }) => {
     <div className="flex flex-col h-full w-full max-w-[1800px] mx-auto py-2 px-2 sm:px-4 md:px-6">
 
       {/* Header */}
-      <div className="flex justify-between items-center mb-4 md:mb-8 px-2 font-orbitron">
+      <div className="flex justify-between items-center mb-2 md:mb-4 px-2 font-orbitron">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -132,7 +132,7 @@ const QuizScreen = ({ questions, onComplete }) => {
           initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative w-full max-w-[600px] h-[20vh] sm:h-[25vh] md:h-[28vh] lg:h-[30vh] mb-2 md:mb-4 flex items-center justify-center shrink-0 mx-auto"
+          className="relative w-full max-w-[380px] aspect-[16/9] mb-1 sm:mb-2 flex items-center justify-center shrink-0 mx-auto"
         >
           <div className="absolute inset-0 bg-premium-accent/10 blur-[50px] rounded-full -z-10"></div>
 
@@ -158,8 +158,8 @@ const QuizScreen = ({ questions, onComplete }) => {
             className="w-full flex justify-center relative"
           >
             <div className="relative w-full max-w-[900px] p-[2px] bg-gradient-to-r from-[#B8860B] via-[#FFE4B5] to-[#B8860B] kbc-clip shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-              <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-2 md:py-3 px-6 md:px-12 text-center flex items-center justify-center min-h-[50px] md:min-h-[60px]">
-                <h2 className="text-base md:text-xl lg:text-2xl font-bold leading-relaxed text-white font-rajdhani tracking-wide">
+              <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-1.5 md:py-2 px-4 md:px-8 text-center flex items-center justify-center min-h-[35px] md:min-h-[45px]">
+                <h2 className="text-xs md:text-sm lg:text-base font-bold leading-relaxed text-white font-rajdhani tracking-wide">
                   {currentQuestion.question}
                 </h2>
               </div>
@@ -216,10 +216,10 @@ const QuizScreen = ({ questions, onComplete }) => {
                         className={`relative w-full h-full kbc-clip-option ${innerBg} py-1.5 md:py-2 px-4 md:px-8 text-left transition-all duration-300 flex items-center justify-between`}
                       >
                         <div className={`flex items-center gap-2 md:gap-3 w-full ${textColor}`}>
-                          <span className={`text-base md:text-lg font-black font-orbitron ${labelColor}`}>
+                          <span className={`text-sm md:text-base font-black font-orbitron ${labelColor}`}>
                             {label}:
                           </span>
-                          <span className="text-sm md:text-base font-semibold font-sans leading-snug line-clamp-2">
+                          <span className="text-xs md:text-sm font-semibold font-sans leading-snug line-clamp-2">
                             {option}
                           </span>
                         </div>
