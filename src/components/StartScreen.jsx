@@ -111,7 +111,7 @@ const Startscreen = ({ onStart }) => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 rounded-full"
+          className="mb-2 sm:mb-4 flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 rounded-full"
           style={{
             background: 'rgba(168,85,247,0.25)',
             border: '2px solid rgba(168,85,247,0.6)'
@@ -155,10 +155,10 @@ const Startscreen = ({ onStart }) => {
 
         {/* Description */}
         <motion.p
-          className="mt-6 sm:mt-8 max-w-2xl text-white/80"
+          className="mt-2 sm:mt-6 max-w-2xl text-white/80"
           style={{
             fontFamily: 'var(--font-game)',
-            fontSize: 'clamp(16px,2.5vw,28px)'
+            fontSize: 'clamp(14px,2.5vw,24px)'
           }}
         >
          Test your knowledge of Bihar's famous landmarks, food & culture! <br />
@@ -168,11 +168,11 @@ Answer the questions and win like KBC!
         {/* Steps */}
        
         {/* Play Button */}
-        <motion.div className="relative mt-10 sm:mt-12 lg:mt-16">
+        <motion.div className="relative mt-4 sm:mt-8 lg:mt-12">
           <button
             onClick={handlePlay}
             className="relative flex items-center justify-center gap-4
-            w-[260px] h-[70px] sm:w-[340px] sm:h-[90px] lg:w-[420px] lg:h-[110px]
+            w-[240px] h-[60px] sm:w-[300px] sm:h-[80px] lg:w-[380px] lg:h-[90px]
             rounded-full transition-transform hover:scale-105 active:scale-95"
             style={{
               background: 'linear-gradient(135deg, #f5a623 0%, #d97706 100%)',
@@ -197,10 +197,10 @@ Answer the questions and win like KBC!
         </motion.div>
 
         {/* Footer */}
-        <motion.div className="mt-8 sm:mt-10 lg:mt-12 flex items-center gap-3 text-white/40 text-sm sm:text-base">
-          <GiStarMedal size={20} />
+        <motion.div className="mt-4 sm:mt-6 lg:mt-8 flex items-center gap-2 text-white/40 text-xs sm:text-sm">
+          <GiStarMedal size={16} />
           <span>Complete the challenge to win a prize!</span>
-          <GiStarMedal size={20} />
+          <GiStarMedal size={16} />
         </motion.div>
       </div>
     </div>
