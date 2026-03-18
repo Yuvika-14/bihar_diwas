@@ -26,21 +26,21 @@ const ResultScreen = ({ score, total, onRestart }) => {
       initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
       animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex flex-col items-center justify-center min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] py-6 md:py-8 text-center px-4 w-full max-w-[1200px] mx-auto font-rajdhani"
+      className="flex flex-col items-center justify-center py-4 text-center px-4 w-full max-w-[1200px] mx-auto font-rajdhani"
     >
 
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-        className="mb-4 md:mb-6 relative shrink-0"
+        className="mb-2 md:mb-4 relative shrink-0"
       >
 
         <div className="absolute inset-0 bg-premium-accent/20 blur-[100px] -z-10 rounded-full"></div>
 
         <div className="relative inline-block mb-4 md:mb-6">
 
-          <Trophy className="w-16 h-16 md:w-24 md:h-24 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
+          <Trophy className="w-12 h-12 md:w-20 md:h-20 mx-auto text-premium-accent drop-shadow-[0_0_30px_rgba(0,255,204,0.6)]" />
 
           <motion.div
             animate={{ rotate: 360 }}
@@ -50,7 +50,7 @@ const ResultScreen = ({ score, total, onRestart }) => {
 
         </div>
 
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-orbitron font-black text-white mb-2 tracking-tight uppercase text-glow">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-orbitron font-black text-white mb-1 md:mb-2 tracking-tight uppercase text-glow">
           {percentage >= 50 ? "Mission Cleared" : "Game Over"}
         </h2>
 
@@ -62,7 +62,7 @@ const ResultScreen = ({ score, total, onRestart }) => {
 
 
       <motion.div
-        className="relative glass-card px-6 md:px-12 py-6 md:py-8 mb-6 md:mb-10 flex flex-col items-center overflow-hidden group border-b-2 border-r-2 border-premium-accent/50 rounded-xl shrink-0 w-full max-w-[500px]"
+        className="relative glass-card px-4 md:px-8 py-4 md:py-6 mb-4 md:mb-6 flex flex-col items-center overflow-hidden group border-b-2 border-r-2 border-premium-accent/50 rounded-xl shrink-0 w-full max-w-[500px]"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
@@ -104,7 +104,7 @@ const ResultScreen = ({ score, total, onRestart }) => {
           playSound('click');
           onRestart();
         }}
-        className="arcade-btn px-10 md:px-12 py-4 md:py-5 text-xl md:text-2xl flex items-center gap-3 md:gap-4 shadow-[0_0_20px_rgba(0,255,204,0.2)]"
+        className="arcade-btn px-6 md:px-10 py-3 md:py-4 text-lg md:text-xl flex items-center gap-2 md:gap-3 shadow-[0_0_20px_rgba(0,255,204,0.2)]"
       >
 
         <RefreshCw className="w-6 h-6 md:w-7 md:h-7" />

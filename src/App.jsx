@@ -42,10 +42,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05050A] text-white overflow-x-hidden overflow-y-auto relative font-sans select-none">
+    <div className="h-[100dvh] w-full bg-[#05050A] text-white overflow-x-hidden overflow-y-auto scroll-smooth hide-scrollbar relative font-sans select-none">
       
       {/* High-End Cinematic Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Deep space radial gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,#1a103c_0%,#05050a_70%)] opacity-80"></div>
         
