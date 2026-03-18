@@ -21,7 +21,10 @@ const QuizScreen = ({ questions, onComplete }) => {
     if (selectedAnswer !== null) return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTimeLeft((prev) => {
+        if (prev > 0) playSound('tick');
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);

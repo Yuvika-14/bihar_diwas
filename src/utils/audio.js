@@ -39,14 +39,14 @@ export const playSound = (type) => {
         break;
 
       case 'tick':
-        // Smooth, light digital tick
+        // Clean, standard digital 'beep'
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(400, now);
-        osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.setValueAtTime(600, now + 0.1);
         gainNode.gain.setValueAtTime(0.05, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        gainNode.gain.linearRampToValueAtTime(0.001, now + 0.1);
         osc.start(now);
-        osc.stop(now + 0.05);
+        osc.stop(now + 0.1);
         break;
 
       case 'correct':

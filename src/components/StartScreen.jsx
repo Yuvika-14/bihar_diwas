@@ -33,11 +33,7 @@ const PARTICLE_CONFIG = Array.from({ length: particleCount }, (_, i) => ({
   delay: Math.random() * 8
 }))
 
-const HOW_TO_STEPS = [
-  { icon: <MousePointerClick size={16} color="#a855f7" />, text: 'Drag image handle' },
-  { icon: <Link2 size={16} color="#22d3ee" />, text: 'Connect to label' },
-  { icon: <CheckCircle2 size={16} color="#4ade80" />, text: 'Match all 5 pairs' }
-]
+
 
 const Startscreen = ({ onStart }) => {
   const { click } = useAudio()
@@ -170,22 +166,7 @@ Answer the questions and win like KBC!
         </motion.p>
 
         {/* Steps */}
-        <motion.div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
-          {HOW_TO_STEPS.map((step, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base lg:text-lg"
-              style={{
-                background: 'rgba(255,255,255,0.08)',
-                border: '1.5px solid rgba(255,255,255,0.15)'
-              }}
-            >
-              {step.icon}
-              <span>{step.text}</span>
-            </div>
-          ))}
-        </motion.div>
-
+       
         {/* Play Button */}
         <motion.div className="relative mt-10 sm:mt-12 lg:mt-16">
           <button
