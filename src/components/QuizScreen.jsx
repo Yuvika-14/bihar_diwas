@@ -22,7 +22,14 @@ const QuizScreen = ({ questions, onComplete }) => {
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
-        if (prev > 0) playSound('tick');
+        if (prev > 0) {
+          if (prev <= 5) {
+            playSound('fastTick');
+            setTimeout(() => playSound('fastTick'), 500);
+          } else {
+            playSound('tick');
+          }
+        }
         return prev - 1;
       });
     }, 1000);

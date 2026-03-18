@@ -49,6 +49,17 @@ export const playSound = (type) => {
         osc.stop(now + 0.1);
         break;
 
+      case 'fastTick':
+        // Urgent higher-pitch and louder beep
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, now);
+        osc.frequency.setValueAtTime(800, now + 0.1);
+        gainNode.gain.setValueAtTime(0.1, now);
+        gainNode.gain.linearRampToValueAtTime(0.001, now + 0.1);
+        osc.start(now);
+        osc.stop(now + 0.1);
+        break;
+
       case 'correct':
         // Happy ascending 8-bit arpeggio
         osc.type = 'triangle';
