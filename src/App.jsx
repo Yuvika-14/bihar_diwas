@@ -9,6 +9,8 @@ function App() {
   const [gameState, setGameState] = useState('start'); // start, playing, result
   const [score, setScore] = useState(0);
   const [selectedSet, setSelectedSet] = useState(null);
+  const [startTime, setStartTime] = useState(null);
+  const [timeTaken, setTimeTaken] = useState(0);
 
   const preloadImages = (questions) => {
   questions.forEach((q) => {
@@ -17,7 +19,7 @@ function App() {
   });
 };
 
-  const startQuiz = () => {
+  const startQuiz = (ageGroup) => {
     // Pick a random set out of the 4
     const randomSetIndex = Math.floor(Math.random() * questionSets.length);
     const chosenSet = questionSets[randomSetIndex];
@@ -27,12 +29,15 @@ function App() {
     const shuffledQuestions = shuffle([...chosenSet.questions]);
          preloadImages(shuffledQuestions);
     
-    setSelectedSet({ title: chosenSet.title, questions: shuffledQuestions });
+    setSelectedSet({ title: chosenSet.title, questions: shuffledQuestions, ageGroup });
     setScore(0);
+    setStartTime(Date.now());
     setGameState('playing');
   };
 
   const handleQuizEnd = (finalScore) => {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    setTimeTaken(elapsed);
     setScore(finalScore);
     setGameState('result');
   };
@@ -75,13 +80,13 @@ function App() {
           
           {gameState === 'playing' && selectedSet && (
             <motion.div key="playing" className="w-full max-w-7xl h-full" initial={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-               <QuizScreen questions={selectedSet.questions} levelTitle={selectedSet.title} onComplete={handleQuizEnd} />
+               <QuizScreen questions={selectedSet.questions} levelTitle={selectedSet.title} timePerQuestion={selectedSet.ageGroup === 'child' ? 15 : 10} onComplete={handleQuizEnd} />
             </motion.div>
           )}
 
           {gameState === 'result' && selectedSet && (
             <motion.div key="result" className="w-full max-w-3xl h-full flex items-center justify-center" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
-              <ResultScreen score={score} total={selectedSet.questions.length} levelTitle={selectedSet.title} onRestart={restartQuiz} />
+              <ResultScreen score={score} total={selectedSet.questions.length} levelTitle={selectedSet.title} timeTaken={timeTaken} onRestart={restartQuiz} />
             </motion.div>
           )}
         </AnimatePresence>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Trophy, RefreshCw, Star, ShieldAlert } from 'lucide-react';
 import { playSound } from '../utils/audio';
 
-const ResultScreen = ({ score, total, onRestart }) => {
+const ResultScreen = ({ score, total, timeTaken, onRestart }) => {
 
   const percentage = (score / total) * 100;
 
@@ -91,6 +91,12 @@ const ResultScreen = ({ score, total, onRestart }) => {
          {score}
           <span className="text-3xl md:text-4xl text-white/30 font-light"> / {total}</span>
         </div>
+
+        {timeTaken !== undefined && (
+          <div className="mt-6 text-xl md:text-2xl font-orbitron text-white/80 shrink-0 flex items-center justify-center gap-2 bg-black/20 px-4 py-2 rounded-lg border border-white/10">
+            Time taken: <span className="text-premium-accent font-bold text-2xl md:text-3xl">{timeTaken}</span> seconds
+          </div>
+        )}
 
       </motion.div>
 

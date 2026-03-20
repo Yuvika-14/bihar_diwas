@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, XCircle, Clock } from 'lucide-react';
 import { playSound } from '../utils/audio';
 
-const QuizScreen = ({ questions, onComplete }) => {
+const QuizScreen = ({ questions, timePerQuestion = 10, onComplete }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(timePerQuestion);
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -74,7 +74,7 @@ const QuizScreen = ({ questions, onComplete }) => {
     setCurrentQuestionIndex((prev) => prev + 1);
     setSelectedAnswer(null);
     setIsAnimating(false);
-    setTimeLeft(10);
+    setTimeLeft(timePerQuestion);
   } else {
     // ✅ use latest score directly
     onComplete(finalScore);
@@ -82,10 +82,10 @@ const QuizScreen = ({ questions, onComplete }) => {
 };
 
   return (
-    <div className="flex flex-col h-full w-full max-w-[1800px] mx-auto py-2 px-2 sm:px-4 md:px-6">
+    <div className="flex flex-col h-full w-full max-w-[1800px] mx-auto py-2 lg:py-4 px-2 sm:px-4 md:px-6 overflow-y-auto">
 
       {/* Header */}
-      <div className="flex justify-between items-center mb-2 md:mb-4 px-2 font-orbitron">
+      <div className="flex justify-between items-center mb-1 md:mb-2 px-2 font-orbitron">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -132,7 +132,7 @@ const QuizScreen = ({ questions, onComplete }) => {
           initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative w-full max-w-[380px] aspect-[16/9] mb-1 sm:mb-2 flex items-center justify-center shrink-0 mx-auto"
+          className="relative w-full max-w-[250px] md:max-w-[300px] lg:max-w-[400px] xl:max-w-[450px] aspect-square max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] mb-2 md:mb-4 lg:mb-6 flex items-center justify-center shrink-0 mx-auto"
         >
           <div className="absolute inset-0 bg-premium-accent/10 blur-[50px] rounded-full -z-10"></div>
 
@@ -147,7 +147,7 @@ const QuizScreen = ({ questions, onComplete }) => {
         </motion.div>
 
         {/* Bottom */}
-        <div className="w-full flex flex-col justify-end gap-3 mt-auto relative z-10 shrink-0">
+        <div className="w-full flex flex-col justify-end gap-1.5 sm:gap-2 mt-auto relative z-10 shrink-0">
 
           {/* Question */}
           <motion.div
@@ -158,8 +158,8 @@ const QuizScreen = ({ questions, onComplete }) => {
             className="w-full flex justify-center relative"
           >
             <div className="relative w-full max-w-[900px] p-[2px] bg-gradient-to-r from-[#B8860B] via-[#FFE4B5] to-[#B8860B] kbc-clip shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-              <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-1.5 md:py-2 px-4 md:px-8 text-center flex items-center justify-center min-h-[35px] md:min-h-[45px]">
-                <h2 className="text-xs md:text-sm lg:text-base font-bold leading-relaxed text-white font-rajdhani tracking-wide">
+              <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-1.5 px-4 md:px-8 text-center flex items-center justify-center min-h-[30px] md:min-h-[40px]">
+                <h2 className="text-[12px] sm:text-xs md:text-sm lg:text-base font-bold leading-tight text-white font-rajdhani tracking-wide">
                   {currentQuestion.question}
                 </h2>
               </div>
@@ -167,7 +167,7 @@ const QuizScreen = ({ questions, onComplete }) => {
           </motion.div>
 
           {/* Options */}
-          <div className="w-full max-w-[1100px] self-center grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6 lg:gap-x-12">
+          <div className="w-full max-w-[1100px] self-center grid grid-cols-1 sm:grid-cols-2 gap-y-1.5 sm:gap-y-2 gap-x-4 lg:gap-x-12">
 
             <AnimatePresence mode="wait">
               {currentQuestion.options.map((option, index) => {
@@ -213,13 +213,13 @@ const QuizScreen = ({ questions, onComplete }) => {
                           if (selectedAnswer === null) playSound("hover");
                         }}
                         onClick={() => handleAnswerClick(option)}
-                        className={`relative w-full h-full kbc-clip-option ${innerBg} py-1.5 md:py-2 px-4 md:px-8 text-left transition-all duration-300 flex items-center justify-between`}
+                        className={`relative w-full h-full kbc-clip-option ${innerBg} py-1 px-4 md:px-6 text-left transition-all duration-300 flex items-center justify-between`}
                       >
-                        <div className={`flex items-center gap-2 md:gap-3 w-full ${textColor}`}>
-                          <span className={`text-sm md:text-base font-black font-orbitron ${labelColor}`}>
+                        <div className={`flex items-center gap-1.5 md:gap-3 w-full ${textColor}`}>
+                          <span className={`text-xs md:text-sm font-black font-orbitron ${labelColor}`}>
                             {label}:
                           </span>
-                          <span className="text-xs md:text-sm font-semibold font-sans leading-snug line-clamp-2">
+                          <span className="text-[11px] sm:text-xs md:text-sm font-semibold font-sans leading-tight line-clamp-2">
                             {option}
                           </span>
                         </div>
