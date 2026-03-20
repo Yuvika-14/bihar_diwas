@@ -94,7 +94,7 @@ const ResultScreen = ({ score, total, timeTaken, onRestart }) => {
 
         {timeTaken !== undefined && (
           <div className="mt-6 text-xl md:text-2xl font-orbitron text-white/80 shrink-0 flex items-center justify-center gap-2 bg-black/20 px-4 py-2 rounded-lg border border-white/10">
-            Time taken: <span className="text-premium-accent font-bold text-2xl md:text-3xl">{timeTaken}</span> seconds
+            Time taken: <span className="text-premium-accent font-bold text-2xl md:text-3xl">{timeTaken}</span>
           </div>
         )}
 

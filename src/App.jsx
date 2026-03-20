@@ -13,21 +13,28 @@ function App() {
   const [timeTaken, setTimeTaken] = useState(0);
 
   const preloadImages = (questions) => {
-  questions.forEach((q) => {
-    const img = new Image();
-    img.src = q.image;
-  });
-};
+    const promises = questions.map((q) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = q.image;
+        img.onload = resolve;
+        img.onerror = resolve; // resolve anyway to avoid hanging indefinitely if an image fails
+      });
+    });
+    return Promise.all(promises);
+  };
 
-  const startQuiz = (ageGroup) => {
-    // Pick a random set out of the 4
+  const startQuiz = async (ageGroup) => {
+    setGameState('loading');
+    
+    // Pick a random set out of the 10
     const randomSetIndex = Math.floor(Math.random() * questionSets.length);
     const chosenSet = questionSets[randomSetIndex];
-
     
     // Shuffle the 10 questions within that set without mutating the original
     const shuffledQuestions = shuffle([...chosenSet.questions]);
-         preloadImages(shuffledQuestions);
+    
+    await preloadImages(shuffledQuestions);
     
     setSelectedSet({ title: chosenSet.title, questions: shuffledQuestions, ageGroup });
     setScore(0);
@@ -36,8 +43,17 @@ function App() {
   };
 
   const handleQuizEnd = (finalScore) => {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    setTimeTaken(elapsed);
+    const rawSeconds = (Date.now() - startTime) / 1000;
+    let timeString = "";
+    if (rawSeconds < 60) {
+      timeString = `${rawSeconds.toFixed(2)} sec`;
+    } else {
+      const m = Math.floor(rawSeconds / 60);
+      const s = (rawSeconds % 60).toFixed(2);
+      timeString = `${m}m ${s.padStart(5, '0')}s`;
+    }
+
+    setTimeTaken(timeString);
     setScore(finalScore);
     setGameState('result');
   };
@@ -75,6 +91,13 @@ function App() {
           {gameState === 'start' && (
             <motion.div key="start" className="w-full max-w-5xl h-full flex items-center justify-center" exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }} transition={{ duration: 0.5 }}>
               <StartScreen onStart={startQuiz} />
+            </motion.div>
+          )}
+
+          {gameState === 'loading' && (
+            <motion.div key="loading" className="w-full h-full flex flex-col items-center justify-center gap-6" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.1 }} transition={{ duration: 0.4 }}>
+              <div className="w-16 h-16 border-4 border-premium-accent border-t-transparent rounded-full animate-spin shadow-[0_0_15px_rgba(0,255,204,0.5)]"></div>
+              <h2 className="text-xl md:text-3xl font-orbitron text-premium-accent animate-pulse tracking-widest font-bold drop-shadow-[0_0_10px_rgba(0,255,204,0.8)]">LOADING ASSETS...</h2>
             </motion.div>
           )}
           
