@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import StartScreen from './components/StartScreen';
 import QuizScreen from './components/QuizScreen';
@@ -11,6 +11,16 @@ function App() {
   const [selectedSet, setSelectedSet] = useState(null);
   const [startTime, setStartTime] = useState(null);
   const [timeTaken, setTimeTaken] = useState(0);
+
+  // Background caching: preload all images globally so they're in browser cache
+  useEffect(() => {
+    const allImages = questionSets.flatMap(set => set.questions.map(q => q.image));
+    const uniqueImages = [...new Set(allImages)];
+    uniqueImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const preloadImages = (questions) => {
     const promises = questions.map((q) => {
@@ -44,14 +54,7 @@ function App() {
 
   const handleQuizEnd = (finalScore) => {
     const rawSeconds = (Date.now() - startTime) / 1000;
-    let timeString = "";
-    if (rawSeconds < 60) {
-      timeString = `${rawSeconds.toFixed(2)} sec`;
-    } else {
-      const m = Math.floor(rawSeconds / 60);
-      const s = (rawSeconds % 60).toFixed(2);
-      timeString = `${m}m ${s.padStart(5, '0')}s`;
-    }
+    const timeString = `${Math.round(rawSeconds)} sec`;
 
     setTimeTaken(timeString);
     setScore(finalScore);

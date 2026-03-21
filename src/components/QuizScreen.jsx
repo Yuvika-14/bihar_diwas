@@ -132,15 +132,15 @@ const QuizScreen = ({ questions, timePerQuestion = 10, onComplete }) => {
           initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative w-full max-w-[250px] md:max-w-[300px] lg:max-w-[400px] xl:max-w-[450px] aspect-square max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] mb-2 md:mb-4 lg:mb-6 flex items-center justify-center shrink-0 mx-auto"
+          className="relative max-w-[90%] sm:max-w-[400px] md:max-w-[500px] max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] mb-2 md:mb-4 lg:mb-6 flex items-center justify-center shrink-0 mx-auto"
         >
           <div className="absolute inset-0 bg-premium-accent/10 blur-[50px] rounded-full -z-10"></div>
 
-          <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.5)]">
+          <div className="relative inline-block h-full max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] rounded-2xl overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.5)]">
             <img
               src={currentQuestion.image}
               alt="Heritage Site"
-              className="w-full h-full object-cover"
+              className="w-auto h-full max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-premium-900 to-transparent"></div>
           </div>

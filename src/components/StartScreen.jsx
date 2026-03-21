@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Link2, CheckCircle2, MousePointerClick, User, Baby } from 'lucide-react'
+import { Play, Link2, CheckCircle2, MousePointerClick, User, Baby, Maximize } from 'lucide-react'
 import { GiIndiaGate, GiStarMedal } from 'react-icons/gi'
 import { BsFillLightningFill } from 'react-icons/bs'
 import { useAudio } from '../hooks/useAudio'
@@ -46,6 +46,20 @@ const Startscreen = ({ onStart }) => {
     click()
     onStart?.(ageGroup)
   }
+
+  const toggleFullScreen = (e) => {
+    e.stopPropagation();
+    click();
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   const handleContainerClick = () => {
     if (isIdle) return
@@ -105,6 +119,15 @@ const Startscreen = ({ onStart }) => {
           background: 'radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%)'
         }}
       />
+
+      {/* Full Screen Toggle (Top Left) */}
+      <div 
+        className="fixed top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md p-3 sm:p-4 rounded-full border border-white/20 shadow-[0_5px_30px_rgba(0,0,0,0.5)] cursor-pointer hover:bg-black/50 transition-colors"
+        onClick={toggleFullScreen}
+        title="Toggle Full Screen"
+      >
+        <Maximize className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      </div>
 
       {/* Age Group Toggle (Top Right) */}
       <div 
