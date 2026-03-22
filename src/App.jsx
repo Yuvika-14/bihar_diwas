@@ -12,41 +12,31 @@ function App() {
   const [startTime, setStartTime] = useState(null);
   const [timeTaken, setTimeTaken] = useState(0);
 
-  // Background caching: preload all images globally so they're in browser cache
-  useEffect(() => {
-    const allImages = questionSets.flatMap(set => set.questions.map(q => q.image));
-    const uniqueImages = [...new Set(allImages)];
-    uniqueImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
+  // Background caching removed since images are no longer displayed
 
-  const preloadImages = (questions) => {
-    const promises = questions.map((q) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = q.image;
-        img.onload = resolve;
-        img.onerror = resolve; // resolve anyway to avoid hanging indefinitely if an image fails
-      });
-    });
-    return Promise.all(promises);
-  };
+  const preloadImages = async () => {}; // No-op since images are removed
 
-  const startQuiz = async (ageGroup) => {
+  const startQuiz = async (difficulty, previousSetId = null) => {
     setGameState('loading');
     
-    // Pick a random set out of the 10
-    const randomSetIndex = Math.floor(Math.random() * questionSets.length);
-    const chosenSet = questionSets[randomSetIndex];
+    // Filter available sets by difficulty
+    const availableSets = questionSets.filter(set => set.difficulty === difficulty);
+    const setPool = availableSets.length > 0 ? availableSets : questionSets;
+
+    // Filter out the previously selected set if there are other options available
+    let selectableSets = setPool;
+    if (previousSetId && setPool.length > 1) {
+      selectableSets = setPool.filter(set => set.id !== previousSetId);
+    }
+
+    // Pick a random set out of the selectable sets
+    const randomSetIndex = Math.floor(Math.random() * selectableSets.length);
+    const chosenSet = selectableSets[randomSetIndex];
     
     // Shuffle the 10 questions within that set without mutating the original
     const shuffledQuestions = shuffle([...chosenSet.questions]);
     
-    await preloadImages(shuffledQuestions);
-    
-    setSelectedSet({ title: chosenSet.title, questions: shuffledQuestions, ageGroup });
+    setSelectedSet({ id: chosenSet.id, title: chosenSet.title, questions: shuffledQuestions, difficulty });
     setScore(0);
     setStartTime(Date.now());
     setGameState('playing');
@@ -62,7 +52,11 @@ function App() {
   };
 
   const restartQuiz = () => {
-    startQuiz();
+    if (selectedSet) {
+      startQuiz(selectedSet.difficulty, selectedSet.id);
+    } else {
+      setGameState('start');
+    }
   };
 
   return (
@@ -106,7 +100,7 @@ function App() {
           
           {gameState === 'playing' && selectedSet && (
             <motion.div key="playing" className="w-full max-w-7xl h-full" initial={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }} animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-               <QuizScreen questions={selectedSet.questions} levelTitle={selectedSet.title} timePerQuestion={selectedSet.ageGroup === 'child' ? 15 : 10} onComplete={handleQuizEnd} />
+               <QuizScreen questions={selectedSet.questions} levelTitle={selectedSet.title} timePerQuestion={20} onComplete={handleQuizEnd} />
             </motion.div>
           )}
 

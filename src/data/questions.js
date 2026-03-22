@@ -1,207 +1,89 @@
-const nalanda = '/images/nalanda_university.png';
-const rajgir = '/images/rajgir_stupa.png';
-const mahabodhi = '/images/mahabodhi_temple.png';
-const golghar = '/images/golghar.png';
-const museum = '/images/museum.png';
-const chief = '/images/chief.png';
-const guru = '/images/guru.png';
-const bri = '/images/bri.png';
-const river = '/images/river.png';
-const setu = '/images/setu.png';
-const maha = '/images/maha.png';
-const novel = '/images/novel.png';
-const lit = '/images/lit.png';
-const madhu = '/images/madhu.png';
-const buxar = '/images/buxar.png';
-const vaishali = '/images/vaishali.png';
-const bridge = '/images/bridge.png';
-const babu = '/images/babu.png';
-const ram = '/images/ram.png';
-const balmiki = '/images/balmiki.png';
-const bhojpuri = '/images/bhojpuri.png';
-const diwas = '/images/diwas.png';
-const flower = '/images/flower.png';
-const fort = '/images/fort.png';
-const gandhi = '/images/gandhi.png';
-const jay = '/images/jay.png';
-const kanwar = '/images/kanwar.png';
-const litchi = '/images/litchi.png';
-const manjusha = '/images/manjusha.png';
-const nawada = '/images/nawada.png';
-const raj = '/images/raj.png';
-const rice = '/images/rice.png';
-const road = '/images/road.png';
-const sari = '/images/sari.png';
-const map = '/images/map.png';
-const patli = '/images/patli.png';
-const walls = '/images/walls.png';
-const sikh = '/images/sikh.png';
-const sonpur = '/images/sonpur.png';
-const tree = '/images/tree.png';
-const vikram = '/images/vikram.png';
-// Placeholders for remaining images
-const mithun = '/images/mithun.png';
-const park = '/images/park.png';
-const chandra = '/images/chandra.png';
-const chatt = '/images/chatt.png';
-const arya = '/images/arya.png';
-const kosi = '/images/kosi.png';
-const barbar = '/images/barbar.png';
-const tomb = '/images/tomb.png';
-const nanda = '/images/nanda.png';
-const makhana = '/images/makhana.png';
-const anga = '/images/anga.png';
-const ashoka = '/images/ashoka.png';
-const falgu = '/images/falgu.png';
-const son = '/images/son.png';
-const bawan = '/images/bawan.png';
-const kali = '/images/kali.png';
-const jute = '/images/jute.png';
-const hiuen = '/images/hiuen.png';
-const kapoori = '/images/kapoori.png';
-const chan = '/images/chan.png';
-const  pawa= '/images/pawa.png';
-const mahesh = '/images/mahesh.png';
-const kishan = '/images/kishan.png';
-const auran= '/images/auran.png';
-const kani= '/images/kani.png';
-const gargi= '/images/gargi.png';
-const bihar= '/images/bihar.png';
-const hajipur= '/images/hajipur.png';
-const r= '/images/r.png';
-const qPool = [
+// Easy Questions (Basic Facts & Direct Knowledge)
+const easyPool = [
   // Set 1
-  { id: 1, image: nalanda, question: "Identify this ancient center of learning, considered one of the earliest universities in the world.", options: ["Vikramshila", "Nalanda University", "Taxila", "Odantapuri"], correctAnswer: "Nalanda University" },
-  { id: 2, image: rajgir, question: "This pure white marble pagoda with golden statues is located on top of Ratnagiri Hill. What is it called?", options: ["Sanchi Stupa", "Dhamek Stupa", "Vishwa Shanti Stupa", "Bawali Stupa"], correctAnswer: "Vishwa Shanti Stupa" },
-  { id: 3, image: mahabodhi, question: "This UNESCO World Heritage site marks the location where the Buddha is said to have attained enlightenment.", options: ["Mahabodhi Temple", "Kashi Vishwanath", "Konark Sun Temple", "Meenakshi Temple"], correctAnswer: "Mahabodhi Temple" },
-  { id: 4, image: golghar, question: "Built in 1786 by Captain John Garstin to store grain after a devastating famine, what is this massive dome called?", options: ["Patna Museum", "Sher Shah Tomb", "Golghar", "Khuda Bakhsh Library"], correctAnswer: "Golghar" },
-  { id: 5, image: museum, question: "Known for its modern, rust-colored Corten steel architecture, which museum is this?", options: ["National Museum", "Bihar Museum", "Jalan Museum", "Gandhi Sangrahalaya"], correctAnswer: "Bihar Museum" },
-  { id: 6, image: vaishali, question: "This polished sandstone pillar, topped with a single lion, was erected by Emperor Ashoka. Where is it located?", options: ["Sarnath", "Lumbini", "Vaishali", "Lauriya Nandangarh"], correctAnswer: "Vaishali" },
-  { id: 7, image: vikram, question: "Along with Nalanda, this was one of the two most important centers of learning in India during the Pala Empire.", options: ["Vikramshila", "Somapura", "Jagaddala", "Odantapuri"], correctAnswer: "Vikramshila" },
-  { id: 8, image: fort, question: "This ancient hill fort is considered one of the largest and strongest forts in India, captured by Sher Shah Suri.", options: ["Munger Fort", "Rohtasgarh Fort", "Jalargarh Fort", "Chunar Fort"], correctAnswer: "Rohtasgarh Fort" },
-  { id: 9, image: tomb, question: "This stunning octagonal mausoleum of red sandstone sits in the middle of an artificial lake in Sasaram.", options: ["Tomb of Hasan Suri", "Tomb of Makhdum Yahya", "Tomb of Sher Shah Suri", "Tomb of Ibrahim Suri"], correctAnswer: "Tomb of Sher Shah Suri" },
-  { id: 10, image: barbar, question: "These are the oldest surviving rock-cut caves in India, dating from the Maurya Empire. What are they called?", options: ["Ajanta Caves", "Ellora Caves", "Elephanta Caves", "Barabar Caves"], correctAnswer: "Barabar Caves" },
-  
+  { id: 1, question: "What is the capital city of Bihar?", options: ["Gaya", "Bhagalpur", "Patna", "Muzaffarpur"], correctAnswer: "Patna" },
+  { id: 2, question: "Which ancient university in Bihar was one of the earliest global centers of learning?", options: ["Vikramshila", "Nalanda University", "Taxila", "Odantapuri"], correctAnswer: "Nalanda University" },
+  { id: 3, question: "The Mahabodhi Temple, where Gautama Buddha attained enlightenment, is located in which city?", options: ["Rajgir", "Vaishali", "Bodh Gaya", "Patna"], correctAnswer: "Bodh Gaya" },
+  { id: 4, question: "Which major river flows through the middle of Bihar, dividing it into north and south?", options: ["Kosi", "Yamuna", "Brahmaputra", "Ganga"], correctAnswer: "Ganga" },
+  { id: 5, question: "What is the massive dome-shaped granary in Patna built by the British called?", options: ["Patna Museum", "Sher Shah Tomb", "Golghar", "Khuda Bakhsh Library"], correctAnswer: "Golghar" },
+  { id: 6, question: "Which festival, dedicated to the Sun God, is considered the most significant festival of Bihar?", options: ["Diwali", "Holi", "Chhath Puja", "Makar Sankranti"], correctAnswer: "Chhath Puja" },
+  { id: 7, question: "Which of the following is the official state animal of Bihar?", options: ["Tiger", "Gaur (Mithun)", "Elephant", "Rhinoceros"], correctAnswer: "Gaur (Mithun)" },
+  { id: 8, question: "Who was the first Chief Minister of Bihar?", options: ["Dr. Rajendra Prasad", "Sri Krishna Sinha", "Karpoori Thakur", "Lalu Prasad Yadav"], correctAnswer: "Sri Krishna Sinha" },
+  { id: 9, question: "The famous Madhubani painting style originated in which historical region of Bihar?", options: ["Magadh", "Mithila", "Bhojpur", "Anga"], correctAnswer: "Mithila" },
+  { id: 10, question: "Which ancient mathematician and astronomer, famous for the concept of zero, was born in Kusumapura (modern Patna)?", options: ["Bhaskara I", "Brahmagupta", "Aryabhata", "Varahamihira"], correctAnswer: "Aryabhata" },
+
   // Set 2
-  { id: 11, image: chief, question: "Who was the first Chief Minister of Bihar?", options: ["Dr. Rajendra Prasad", "Sri Krishna Sinha", "Karpoori Thakur", "Lalu Prasad Yadav"], correctAnswer: "Sri Krishna Sinha" },
-  { id: 12, image:chatt, question: "Which festival is dedicated to the Sun God and is the most significant in Bihar?", options: ["Diwali", "Holi", "Chhath Puja", "Makar Sankranti"], correctAnswer: "Chhath Puja" },
-  { id: 13, image: arya, question: "Which famous mathematician and astronomer from ancient India was born in Kusumapura (modern Patna)?", options: ["Bhaskara I", "Brahmagupta", "Aryabhata", "Varahamihira"], correctAnswer: "Aryabhata" },
-  { id: 14, image: golghar, question: "What is the capital of Bihar?", options: ["Gaya", "Bhagalpur", "Patna", "Muzaffarpur"], correctAnswer: "Patna" },
-  { id: 15, image: kosi, question: "Which river is known as the 'Sorrow of Bihar'?", options: ["Ganga", "Kosi", "Gandak", "Son"], correctAnswer: "Kosi" },
-  { id: 16, image: madhu, question: "The famous Madhubani painting originated in which region of Bihar?", options: ["Magadh", "Mithila", "Bhojpur", "Anga"], correctAnswer: "Mithila" },
-  { id: 17, image: park, question: "Which National Park is located in Bihar?", options: ["Jim Corbett", "Kaziranga", "Valmiki National Park", "Sundarbans"], correctAnswer: "Valmiki National Park" },
-  { id: 18, image: chandra, question: "Who founded the Maurya Empire?", options: ["Ashoka", "Bindusara", "Chandragupta Maurya", "Bimbisara"], correctAnswer: "Chandragupta Maurya" },
-  { id: 19, image: rajgir, question: "Which ancient city was the capital of the Magadha Empire?", options: ["Rajgir", "Vaishali", "Pataliputra", "Ayodhya"], correctAnswer: "Rajgir" },
-  { id: 20, image: mithun, question: "What is the official state animal of Bihar?", options: ["Tiger", "Gaur (Mithun)", "Elephant", "Rhinoceros"], correctAnswer: "Gaur (Mithun)" },
+  { id: 11, question: "Who was the first President of India, hailing from Bihar?", options: ["Jawaharlal Nehru", "Dr. Rajendra Prasad", "Sardar Patel", "Dr. S. Radhakrishnan"], correctAnswer: "Dr. Rajendra Prasad" },
+  { id: 12, question: "In which district is the Valmiki National Park, the only national park in Bihar, located?", options: ["West Champaran", "East Champaran", "Kaimur", "Gaya"], correctAnswer: "West Champaran" },
+  { id: 13, question: "Which Indian leader led his first major Satyagraha movement in Champaran, Bihar in 1917?", options: ["Subhas Chandra Bose", "Sardar Patel", "Mahatma Gandhi", "Bhagat Singh"], correctAnswer: "Mahatma Gandhi" },
+  { id: 14, question: "Which great Emperor of the Maurya Dynasty embraced Buddhism after the Kalinga War?", options: ["Chandragupta", "Bindusara", "Ashoka", "Bimbisara"], correctAnswer: "Ashoka" },
+  { id: 15, question: "What is the state flower of Bihar?", options: ["Lotus", "Kachnar (Orchid Tree)", "Marigold", "Rose"], correctAnswer: "Kachnar (Orchid Tree)" },
+  { id: 16, question: "Which Sikh Guru was born in Patna, where the Takht Sri Patna Sahib now stands?", options: ["Guru Nanak", "Guru Gobind Singh", "Guru Arjan", "Guru Tegh Bahadur"], correctAnswer: "Guru Gobind Singh" },
+  { id: 17, question: "Which ancient city served as the capital of the powerful Magadha Empire?", options: ["Rajgir", "Vaishali", "Ayodhya", "Lumbini"], correctAnswer: "Rajgir" },
+  { id: 18, question: "Which river is widely known as the 'Sorrow of Bihar' due to frequent flooding?", options: ["Ganga", "Kosi", "Gandak", "Son"], correctAnswer: "Kosi" },
+  { id: 19, question: "The Sonepur Cattle Fair, one of Asia's largest, is held at the confluence of the Ganga and which other river?", options: ["Yamuna", "Gandak", "Kosi", "Punpun"], correctAnswer: "Gandak" },
+  { id: 20, question: "On what date is 'Bihar Diwas' (Bihar Day) celebrated every year?", options: ["1st April", "22nd March", "15th August", "26th January"], correctAnswer: "22nd March" },
 
   // Set 3
-  { id: 21, image: gandhi, question: "Which famous Indian leader successfully led the Champaran Satyagraha in Bihar?", options: ["Jawaharlal Nehru", "Sardar Patel", "Subhas Chandra Bose", "Mahatma Gandhi"], correctAnswer: "Mahatma Gandhi" },
-  { id: 22, image: tree, question: "The Bodhi Tree, under which Gautama Buddha attained enlightenment, is in which city?", options: ["Patna", "Rajgir", "Bodh Gaya", "Vaishali"], correctAnswer: "Bodh Gaya" },
-  { id: 23, image: road, question: "Which medieval ruler built the Grand Trunk Road?", options: ["Akbar", "Aurangzeb", "Sher Shah Suri", "Babur"], correctAnswer: "Sher Shah Suri" },
-  { id: 24, image: bridge, question: "Which state is situated to the East of Bihar?", options: ["Uttar Pradesh", "West Bengal", "Jharkhand", "Nepal"], correctAnswer: "West Bengal" },
-  { id: 25, image: sari, question: "What is the traditional attire of women in Bihar?", options: ["Lehenga", "Salwar Kameez", "Sari", "Mekhela Chador"], correctAnswer: "Sari" },
-  { id: 26, image: balmiki, question: "Which ancient texts were composed by sage Valmiki?", options: ["Mahabharata", "Ramayana", "Vedas", "Upanishads"], correctAnswer: "Ramayana" },
-  { id: 27, image: vaishali, question: "The ruins of Vaishali are famous for the site of the second Buddhist council. Who convened it?", options: ["Ajatashatru", "Kalashoka", "Ashoka", "Kanishka"], correctAnswer: "Kalashoka" },
-  { id: 28, image: manjusha, question: "Which of the following describes the Manjusha Art form of Bihar?", options: ["Scroll painting", "Mural painting", "Snake motif painting", "Sand art"], correctAnswer: "Snake motif painting" },
-  { id: 29, image: bhojpuri, question: "Bhojpuri, Maithili, and Magahi are primarily what?", options: ["Dance forms", "Musical instruments", "Languages/Dialects", "Festivals"], correctAnswer: "Languages/Dialects" },
-  { id: 30, image: kanwar, question: "Which famous bird sanctuary is located in Begusarai district?", options: ["Sultanpur", "Kanwar Lake", "Bharatpur", "Nal Sarovar"], correctAnswer: "Kanwar Lake" },
-
-  // Set 4
-  { id: 31, image: jay, question: "Who was the 'Loknayak' of Bihar?", options: ["Jayaprakash Narayan", "Rajendra Prasad", "Bindeshwari Dubey", "Jagannath Mishra"], correctAnswer: "Jayaprakash Narayan" },
-  { id: 32, image: sonpur, question: "The famous Sonepur Cattle Fair is held on the confluence of which rivers?", options: ["Ganga and Yamuna", "Ganga and Gandak", "Kosi and Bagmati", "Son and Punpun"], correctAnswer: "Ganga and Gandak" },
-  { id: 33, image: litchi, question: "Which district of Bihar is known for its Litchi production?", options: ["Muzaffarpur", "Darbhanga", "Saharsa", "Purnea"], correctAnswer: "Muzaffarpur" },
-  { id: 34, image: flower, question: "What is the state flower of Bihar?", options: ["Lotus", "Kachnar (Orchid Tree)", "Marigold", "Rose"], correctAnswer: "Kachnar (Orchid Tree)" },
-  { id: 35, image: sikh, question: "Which Sikh Guru was born in Patna?", options: ["Guru Nanak", "Guru Gobind Singh", "Guru Arjan", "Guru Tegh Bahadur"], correctAnswer: "Guru Gobind Singh" },
-  { id: 36, image: diwas, question: "When is Bihar Diwas celebrated?", options: ["1st April", "22nd March", "15th August", "26th January"], correctAnswer: "22nd March" },
-  { id: 37, image: raj, question: "Which notable freedom fighter from Bihar served as the first President of independent India?", options: ["Dr. Rajendra Prasad", "Maulana Abul Kalam Azad", "Dr. Zakir Husain", "V.V. Giri"], correctAnswer: "Dr. Rajendra Prasad" },
-  { id: 38, image: vaishali, question: "Which ancient republic, considered one of the earliest, had its capital at Vaishali?", options: ["Vajjis", "Mallas", "Kuru", "Panchala"], correctAnswer: "Vajjis" },
-  { id: 39, image: rice, question: "What is the primary crop grown in Bihar?", options: ["Wheat", "Sugarcane", "Rice", "Maize"], correctAnswer: "Rice" },
-  { id: 40, image:nawada, question: "The Kakolat Waterfall is situated in which district?", options: ["Gaya", "Nawada", "Rohtas", "Kaimur"], correctAnswer: "Nawada" },
-  
-  // Set 5
-  { id: 41, image: bri, question: "Who was the last ruler of the Mauryan Empire?", options: ["Brihadratha", "Samprati", "Dasharatha", "Bindusara"], correctAnswer: "Brihadratha" },
-  { id: 42, image: lit, question: "What is the literacy rate of Bihar as per the 2011 Census?", options: ["58.5%", "61.8%", "63.8%", "54.2%"], correctAnswer: "61.8%" },
-  { id: 43, image: buxar, question: "In which year did the Battle of Buxar take place?", options: ["1757", "1764", "1761", "1765"], correctAnswer: "1764" },
-  { id: 44, image: babu, question: "Who led the Great Rebellion of 1857 in Bihar?", options: ["Babu Kunwar Singh", "Mangal Pandey", "Tatya Tope", "Nana Sahib"], correctAnswer: "Babu Kunwar Singh" },
-  { id: 45, image: ram, question: "Which famous poet from Bihar earned the title 'Rashtrakavi'?", options: ["Phanishwar Nath Renu", "Ramdhari Singh Dinkar", "Vidyapati", "Bikhari Thakur"], correctAnswer: "Ramdhari Singh Dinkar" },
-  { id: 46, image: novel, question: "The famous novel 'Maila Aanchal' was written by which Bihari author?", options: ["Premchand", "Ramdhari Singh Dinkar", "Phanishwar Nath Renu", "Bhikhari Thakur"], correctAnswer: "Phanishwar Nath Renu" },
-  { id: 47, image: patli, question: "When did Bihar formally become a separate province from the Bengal Presidency?", options: ["1911", "1912", "1936", "1947"], correctAnswer: "1912" },
-  { id: 48, image: setu, question: "Mahatma Gandhi Setu connects Patna to which city in the north?", options: ["Hajipur", "Muzaffarpur", "Darbhanga", "Chhapra"], correctAnswer: "Hajipur" },
-  { id: 49, image: maha, question: "Which great Jain Tirthankara was born in Kundagrama (near Vaishali)?", options: ["Rishabhanatha", "Parshvanatha", "Mahavira", "Neminatha"], correctAnswer: "Mahavira" },
-  { id: 50, image: nalanda, question: "Who destroyed the ancient university of Nalanda?", options: ["Qutb al-Din Aibak", "Muhammad bin Tughluq", "Bakhtiyar Khalji", "Alauddin Khalji"], correctAnswer: "Bakhtiyar Khalji" },
-
-  // Set 6
-  { id: 51, image: rajgir, question: "Where was the first Buddhist Council held?", options: ["Pataliputra", "Rajgir", "Vaishali", "Kundalvana"], correctAnswer: "Rajgir" },
-  { id: 52, image: litchi, question: "To which crop is the 'Shahi' variety native in Bihar?", options: ["Mango", "Litchi", "Banana", "Makhana"], correctAnswer: "Litchi" },
-  { id: 53, image: river, question: "Which is the longest river flowing solely through Bihar?", options: ["Ganga", "Burhi Gandak", "Kosi", "Mahananda"], correctAnswer: "Burhi Gandak" },
-  { id: 54, image: tomb, question: "Which prominent architectural structure in Bihar was modelled on the Taj Mahal?", options: ["Tomb of Sher Shah", "Golghar", "Maner Sharif", "Pathar Ki Masjid"], correctAnswer: "Maner Sharif" },
-  { id: 55, image: kanwar, question: "Kanwar Lake Bird Sanctuary is located in which district?", options: ["Begusarai", "Bhagalpur", "Patna", "West Champaran"], correctAnswer: "Begusarai" },
-  { id: 56, image: sonpur, question: "What is the historical name of the famous cattle fair at Sonepur?", options: ["Madavgarh Mela", "Harihar Kshetra Mela", "Maghi Mela", "Shravani Mela"], correctAnswer: "Harihar Kshetra Mela" },
-  { id: 57, image: walls, question: "The Cyclopean Wall, one of the oldest examples of cyclopean masonry, is located in?", options: ["Nalanda", "Pataliputra", "Rajgir", "Vaishali"], correctAnswer: "Rajgir" },
-  { id: 58, image: patli, question: "Who shifted the capital of Magadha from Rajgir to Pataliputra?", options: ["Bimbisara", "Udayin", "Kalashoka", "Shishunaga"], correctAnswer: "Udayin" },
-  { id: 59, image: nalanda, question: "During which era did the famous Nalanda University flourish the most?", options: ["Mauryan", "Kushan", "Gupta", "Mughal"], correctAnswer: "Gupta" },
-  { id: 60, image: nanda, question: "Who was the founder of the Nanda Dynasty?", options: ["Dhana Nanda", "Mahapadma Nanda", "Shishunaga", "Chandragupta"], correctAnswer: "Mahapadma Nanda" },
-
-  // Set 7
-  { id: 61, image: guru, question: "Takht Sri Patna Sahib was built by which Sikh ruler?", options: ["Maharaja Ranjit Singh", "Guru Gobind Singh", "Guru Har Rai", "Baba Banda Singh Bahadur"], correctAnswer: "Maharaja Ranjit Singh" },
-  { id: 62, image: makhana, question: "Bihar accounts for the highest production of which aquatic crop in India?", options: ["Water Chestnut", "Makhana (Fox nut)", "Lotus", "Water Lily"], correctAnswer: "Makhana (Fox nut)" },
-  { id: 63, image: anga, question: "Which ancient kingdom was located in the present-day Bhagalpur and Munger districts?", options: ["Magadha", "Vajji", "Anga", "Malla"], correctAnswer: "Anga" },
-  { id: 64, image: museum, question: "The Didarganj Yakshi, a fine example of Mauryan art, is currently housed where?", options: ["National Museum, Delhi", "Patna Museum", "Bihar Museum", "Indian Museum, Kolkata"], correctAnswer: "Bihar Museum" },
-  { id: 65, image: jay, question: "Which airport in Bihar is named after Jayaprakash Narayan?", options: ["Gaya Airport", "Patna Airport", "Darbhanga Airport", "Purnea Airport"], correctAnswer: "Patna Airport" },
-  { id: 66, image: ashoka, question: "Under which king was the Third Buddhist Council convened at Pataliputra?", options: ["Ashoka", "Kanishka", "Ajatashatru", "Kalashoka"], correctAnswer: "Ashoka" },
-  { id: 67, image: fort, question: "Which district of Bihar has the highest literacy rate as per 2011 Census?", options: ["Patna", "Rohtas", "Munger", "Aurangabad"], correctAnswer: "Rohtas" },
-  { id: 68, image: golghar, question: "Which of the following is true about 'Golghar'?", options: ["It's a tomb", "It's a granary", "It's a royal palace", "It's an observatory"], correctAnswer: "It's a granary" },
-  { id: 69, image: madhu, question: "What is the primary theme of Madhubani paintings?", options: ["Nature and Hindu deities", "Modern cityscapes", "Abstract geometry", "Islamic calligraphy"], correctAnswer: "Nature and Hindu deities" },
-  { id: 70, image: bhojpuri, question: "Bhikhari Thakur is famously known as the Shakespeare of which language?", options: ["Maithili", "Magahi", "Bhojpuri", "Angika"], correctAnswer: "Bhojpuri" },
-
-  // Set 8
-  { id: 71, image: barbar, question: "The Barabar Hill Caves were originally constructed for which ascetic sect?", options: ["Buddhists", "Jains", "Ajivikas", "Hindus"], correctAnswer: "Ajivikas" },
-  { id: 72, image: kapoori, question: "Which prominent socialist leader from Bihar served multiple terms as Chief Minister and championed social justice?", options: ["Nitish Kumar", "Lalu Prasad Yadav", "Karpoori Thakur", "Sri Krishna Sinha"], correctAnswer: "Karpoori Thakur" },
-  { id: 73, image: anga, question: "Bihula-Bishari is a regional folk festival celebrated predominantly in which region?", options: ["Anga (Bhagalpur)", "Mithila (Darbhanga)", "Magadh (Patna)", "Bhojpur (Buxar)"], correctAnswer: "Anga (Bhagalpur)" },
-  { id: 74, image: hiuen, question: "Which medieval traveler visited Nalanda and wrote detailed accounts of its grandeur?", options: ["Ibn Battuta", "Marco Polo", "Hiuen Tsang (Xuanzang)", "Al-Biruni"], correctAnswer: "Hiuen Tsang (Xuanzang)" },
-  { id: 75, image: bawan, question: "What is Bawan Buti, mostly practiced in Nalanda district?", options: ["A weaving technique", "A folk dance", "A traditional dish", "An ancient martial art"], correctAnswer: "A weaving technique" },
-  { id: 76, image: son, question: "Which major tributary joins the Ganga near Patna from the south?", options: ["Gandak", "Kosi", "Son", "Mahananda"], correctAnswer: "Son" },
-  { id: 77, image: falgu, question: "Gaya is a major pilgrimage site for offering Pind Daan. On the banks of which river is it located?", options: ["Ganga", "Falgu", "Punpun", "Son"], correctAnswer: "Falgu" },
-  { id: 78, image: setu, question: "Which modern infrastructure is known as Asia's longest river bridge?", options: ["Bandra-Worli Sea Link", "Mahatma Gandhi Setu", "Dhola-Sadiya Bridge", "Bogibeel Bridge"], correctAnswer: "Mahatma Gandhi Setu" },
-  { id: 79, image: kali, question: "Which of these classical scholars did NOT belong to ancient Bihar?", options: ["Aryabhata", "Chanakya (Kautilya)", "Panini", "Kalidasa"], correctAnswer: "Kalidasa" },
-  { id: 80, image: jute, question: "Which district in Bihar is the largest producer of jute?", options: ["Patna", "Purnia", "Bhagalpur", "Gaya"], correctAnswer: "Purnia" },
-
-  // Set 9
-  { id: 81, image: gandhi, question: "In which ashram did Mahatma Gandhi stay during the Champaran Satyagraha?", options: ["Sabarmati Ashram", "Bhitiharwa Ashram", "Sadaqat Ashram", "Sevagram Ashram"], correctAnswer: "Bhitiharwa Ashram" },
-  { id: 82, image: guru, question: "Guru Gobind Singh, the 10th Sikh Guru, was born in Patna in which year?", options: ["1666", "1699", "1708", "1650"], correctAnswer: "1666" },
-  { id: 83, image: kani, question: "Which king convened the Fourth Buddhist Council (which was NOT in Bihar but relevant to Buddhism)?", options: ["Ashoka", "Kanishka", "Ajatashatru", "Pushyamitra Shunga"], correctAnswer: "Kanishka" },
-  { id: 84, image: gargi, question: "Who among the following was a legendary female scholar in ancient Mithila?", options: ["Gargi Vachaknavi", "Amrapali", "Sita", "Yashodhara"], correctAnswer: "Gargi Vachaknavi" },
-  { id: 85, image: nanda, question: "Which dynasty ruled Bihar immediately before the Mauryas?", options: ["Shunga Dynasty", "Nanda Dynasty", "Haryanka Dynasty", "Gupta Dynasty"], correctAnswer: "Nanda Dynasty" },
-  { id: 86, image: bihar, question: "Sujini embroidery is a famous traditional craft of which state?", options: ["Gujarat", "Rajasthan", "Bihar", "West Bengal"], correctAnswer: "Bihar" },
-  { id: 87, image: hajipur, question: "Which is the principal headquarters of the East Central Railway zone in Bihar?", options: ["Patna", "Samastipur", "Hajipur", "Mughalsarai"], correctAnswer: "Hajipur" },
-  { id: 88, image: mahabodhi, question: "Which prominent international organization has declared the Mahabodhi Temple a World Heritage Site?", options: ["UNICEF", "UNESCO", "WHO", "UNEP"], correctAnswer: "UNESCO" },
-  { id: 89, image: r, question: "Zardalu mango, Katarni rice, and Magahi paan from Bihar have received which special tag?", options: ["ISI Mark", "Agmark", "Geographical Indication (GI)", "Eco-mark"], correctAnswer: "Geographical Indication (GI)" },
-  { id: 90, image: patli, question: "What was the ancient name of Patna?", options: ["Prayagraj", "Kanakpur", "Pataliputra", "Ayodhya"], correctAnswer: "Pataliputra" },
-
-  // Set 10
-  { id: 91, image: chandra, question: "Megasthenes, the Greek ambassador, visited the court of which king in Pataliputra?", options: ["Chandragupta Maurya", "Ashoka", "Bindusara", "Samudragupta"], correctAnswer: "Chandragupta Maurya" },
-  { id: 92, image: chan, question: "Which book was authored by the ancient scholar Kautilya (Chanakya)?", options: ["Arthashastra", "Indica", "Mudrarakshasa", "Panchatantra"], correctAnswer: "Arthashastra" },
-  { id: 93, image: jay, question: "Which famous leader started the 'Total Revolution' (Sampoorna Kranti) movement from Bihar in 1974?", options: ["Lalu Prasad Yadav", "Jayaprakash Narayan", "Nitish Kumar", "Ram Manohar Lohia"], correctAnswer: "Jayaprakash Narayan" },
-  { id: 94, image: pawa, question: "Which holy place of Jains in Bihar features the Jal Mandir in the middle of a lotus pond?", options: ["Rajgir", "Pawapuri", "Kundalpur", "Kamaldah"], correctAnswer: "Pawapuri" },
-  { id: 95, image: mahesh, question: "Dr. Sachchidananda Sinha and who else are considered the main architects of modern Bihar?", options: ["Mazharul Haque", "Dr. Rajendra Prasad", "Mahesh Narayan", "Hasan Imam"], correctAnswer: "Mahesh Narayan" },
-  { id: 96, image: kishan, question: "Which district is bordered by Nepal to the north and West Bengal to the east?", options: ["West Champaran", "Kishanganj", "Purnia", "Araria"], correctAnswer: "Kishanganj" },
-  { id: 97, image: sonpur, question: "The ancient festival of Sonepur Mela begins on which auspicious day?", options: ["Diwali", "Makar Sankranti", "Kartik Purnima", "Chhath Puja"], correctAnswer: "Kartik Purnima" },
-  { id: 98, image: auran, question: "Under which Mughal emperor's reign did Patna become a prominent center of international trade?", options: ["Akbar", "Jahangir", "Shah Jahan", "Aurangzeb"], correctAnswer: "Aurangzeb" },
-  { id: 99, image: mahesh, question: "During the Swadeshi Movement, who established the 'Bihar National College' in Patna?", options: ["Dr. Rajendra Prasad", "Sachchidananda Sinha", "Mahatma Gandhi", "Syed Hasan Imam"], correctAnswer: "Sachchidananda Sinha" },
-  { id: 100, image: rajgir, question: "What is the name of the famous glass bridge inaugurated in Rajgir, Bihar?", options: ["Rajgir Glass Skywalk", "Nalanda Glass Bridge", "Vishwa Shanti Bridge", "Magadh Skywalk"], correctAnswer: "Rajgir Glass Skywalk" }
+  { id: 21, question: "Which district in Bihar is renowned globally for its sweet and juicy 'Shahi Litchi'?", options: ["Muzaffarpur", "Darbhanga", "Saharsa", "Purnea"], correctAnswer: "Muzaffarpur" },
+  { id: 22, question: "Which medieval ruler, known for building the Grand Trunk Road, is interred in a magnificent tomb in Sasaram, Bihar?", options: ["Akbar", "Aurangzeb", "Sher Shah Suri", "Babur"], correctAnswer: "Sher Shah Suri" },
+  { id: 23, question: "What is the most widely spoken language/dialect in the western regions of Bihar, like Arrah and Buxar?", options: ["Maithili", "Magahi", "Bhojpuri", "Angika"], correctAnswer: "Bhojpuri" },
+  { id: 24, question: "Who is popularly known as the 'Loknayak' of Bihar and led the 'Total Revolution' in 1974?", options: ["Jayaprakash Narayan", "Rajendra Prasad", "Karpoori Thakur", "Lalu Prasad Yadav"], correctAnswer: "Jayaprakash Narayan" },
+  { id: 25, question: "Which state is situated immediately to the east of Bihar?", options: ["Uttar Pradesh", "West Bengal", "Jharkhand", "Nepal"], correctAnswer: "West Bengal" },
+  { id: 26, question: "The Mahatma Gandhi Setu bridge connects Patna to which city across the Ganga river?", options: ["Hajipur", "Muzaffarpur", "Darbhanga", "Chhapra"], correctAnswer: "Hajipur" },
+  { id: 27, question: "What is the primary food crop grown in Bihar, essential to the local diet?", options: ["Wheat", "Sugarcane", "Rice", "Maize"], correctAnswer: "Rice" },
+  { id: 28, question: "Which famous 20th-century Hindi poet from Bihar earned the prestigious title 'Rashtrakavi'?", options: ["Phanishwar Nath Renu", "Ramdhari Singh Dinkar", "Vidyapati", "Bikhari Thakur"], correctAnswer: "Ramdhari Singh Dinkar" },
+  { id: 29, question: "What is the traditional attire of women in rural Bihar?", options: ["Lehenga", "Salwar Kameez", "Sari", "Mekhela Chador"], correctAnswer: "Sari" },
+  { id: 30, question: "Which Hindu deity is the primary focus of the Chhath Puja festival in Bihar?", options: ["Lord Shiva", "Lord Vishnu", "Sun God (Surya)", "Goddess Durga"], correctAnswer: "Sun God (Surya)" }
 ];
 
+// Medium Questions (Slightly Deeper Historical/Cultural Knowledge)
+const mediumPool = [
+  // Set 1
+  { id: 31, question: "Which classical scholar authored the 'Arthashastra' and guided the establishment of the Mauryan Empire?", options: ["Aryabhata", "Chanakya (Kautilya)", "Panini", "Kalidasa"], correctAnswer: "Chanakya (Kautilya)" },
+  { id: 32, question: "The Kakolat Waterfall, a popular tourist destination, is situated in which district?", options: ["Gaya", "Nawada", "Rohtas", "Kaimur"], correctAnswer: "Nawada" },
+  { id: 33, question: "Which famous bird sanctuary, a large oxbow lake, is located in Begusarai district?", options: ["Sultanpur", "Kanwar Lake", "Bharatpur", "Nal Sarovar"], correctAnswer: "Kanwar Lake" },
+  { id: 34, question: "Bihar is the largest producer of which unique aquatic seed crop in India, famously consumed roasted?", options: ["Water Chestnut", "Makhana (Fox nut)", "Lotus", "Water Lily"], correctAnswer: "Makhana (Fox nut)" },
+  { id: 35, question: "The pure white Vishwa Shanti Stupa, accessible via a ropeway, is located on top of Ratnagiri Hill in:", options: ["Patna", "Gaya", "Rajgir", "Nalanda"], correctAnswer: "Rajgir" },
+  { id: 36, question: "What was the ancient name of Patna during the Magadha period?", options: ["Prayagraj", "Kanakpur", "Pataliputra", "Ayodhya"], correctAnswer: "Pataliputra" },
+  { id: 37, question: "Which of these regions in Bihar is renowned for its traditional Bawan Buti weaving technique?", options: ["Bhagalpur", "Darbhanga", "Nalanda", "Purnia"], correctAnswer: "Nalanda" },
+  { id: 38, question: "The Didarganj Yakshi statue, a brilliant example of Mauryan polished stone art, is currently housed in which museum?", options: ["National Museum, Delhi", "Patna Museum", "Bihar Museum", "Indian Museum, Kolkata"], correctAnswer: "Bihar Museum" },
+  { id: 39, question: "Who was the founder of the powerful Mauryan Empire?", options: ["Ashoka", "Bindusara", "Chandragupta Maurya", "Bimbisara"], correctAnswer: "Chandragupta Maurya" },
+  { id: 40, question: "Which Great Jain Tirthankara was born in Kundagrama, near Vaishali in Bihar?", options: ["Rishabhanatha", "Parshvanatha", "Mahavira", "Neminatha"], correctAnswer: "Mahavira" },
+
+  // Set 2
+  { id: 41, question: "Which prominent socialist leader and former Chief Minister of Bihar is known for championing social justice and reservations?", options: ["Nitish Kumar", "Lalu Prasad Yadav", "Karpoori Thakur", "Sri Krishna Sinha"], correctAnswer: "Karpoori Thakur" },
+  { id: 42, question: "The famous Hindi novel 'Maila Aanchal' was written by which legendary author from Bihar?", options: ["Premchand", "Ramdhari Singh Dinkar", "Phanishwar Nath Renu", "Bhikhari Thakur"], correctAnswer: "Phanishwar Nath Renu" },
+  { id: 43, question: "In which year did Bihar formally become a separate province from the Bengal Presidency under British rule?", options: ["1911", "1912", "1936", "1947"], correctAnswer: "1912" },
+  { id: 44, question: "Who valiantly led the Great Rebellion of 1857 in Bihar against the British East India Company?", options: ["Babu Kunwar Singh", "Mangal Pandey", "Tatya Tope", "Nana Sahib"], correctAnswer: "Babu Kunwar Singh" },
+  { id: 45, question: "Which airport in Bihar's capital is named after a prominent freedom fighter?", options: ["Birsa Munda Airport", "Jayaprakash Narayan Airport", "Lal Bahadur Shastri Airport", "Netaji Subhash Chandra Bose Airport"], correctAnswer: "Jayaprakash Narayan Airport" },
+  { id: 46, question: "Bhikhari Thakur is famously known as the 'Shakespeare' of which regional language?", options: ["Maithili", "Magahi", "Bhojpuri", "Angika"], correctAnswer: "Bhojpuri" },
+  { id: 47, question: "Which major tributary river joins the Ganga near Patna from the south?", options: ["Gandak", "Kosi", "Son", "Mahananda"], correctAnswer: "Son" },
+  { id: 48, question: "What famous structure in Rajgir allows tourists to walk high above the ground with a transparent floor?", options: ["Rajgir Glass Skywalk", "Nalanda Suspension Bridge", "Vishwa Shanti Ropeway", "Magadh Skywalk"], correctAnswer: "Rajgir Glass Skywalk" },
+  { id: 49, question: "In the context of Bihar's produce, what do Zardalu mango, Katarni rice, and Magahi paan have in common?", options: ["They are exclusively exported", "They have Geographical Indication (GI) tags", "They are only grown in Patna", "They are winter crops only"], correctAnswer: "They have Geographical Indication (GI) tags" },
+  { id: 50, question: "Which prominent international organization declared the Mahabodhi Temple Complex in Bodh Gaya a World Heritage Site?", options: ["UNICEF", "UNESCO", "WHO", "UNEP"], correctAnswer: "UNESCO" },
+
+  // Set 3
+  { id: 51, question: "Which of the following describes the 'Manjusha' Art form of Bihar?", options: ["Scroll painting", "Mural painting", "Snake motif painting", "Sand art"], correctAnswer: "Snake motif painting" },
+  { id: 52, question: "The ruins of Vaishali are famous for the site of the second Buddhist council. It was also the capital of which ancient republic?", options: ["Vajjis", "Mallas", "Kuru", "Panchala"], correctAnswer: "Vajjis" },
+  { id: 53, question: "Which district of Bihar has the highest literacy rate as per the 2011 Census?", options: ["Patna", "Rohtas", "Munger", "Aurangabad"], correctAnswer: "Rohtas" },
+  { id: 54, question: "The ancient rock-cut Barabar Hill Caves were originally constructed for which ascetic sect?", options: ["Buddhists", "Jains", "Ajivikas", "Hindus"], correctAnswer: "Ajivikas" },
+  { id: 55, question: "Which medieval traveler visited Nalanda and wrote detailed accounts of its grandeur?", options: ["Ibn Battuta", "Marco Polo", "Hiuen Tsang (Xuanzang)", "Al-Biruni"], correctAnswer: "Hiuen Tsang (Xuanzang)" },
+  { id: 56, question: "Gaya is a major pilgrimage site for offering 'Pind Daan'. On the banks of which river is it located?", options: ["Ganga", "Falgu", "Punpun", "Son"], correctAnswer: "Falgu" },
+  { id: 57, question: "Which is the longest river flowing solely through Bihar?", options: ["Ganga", "Burhi Gandak", "Kosi", "Mahananda"], correctAnswer: "Burhi Gandak" },
+  { id: 58, question: "Which dynasty ruled Bihar immediately before the Mauryas?", options: ["Shunga Dynasty", "Nanda Dynasty", "Haryanka Dynasty", "Gupta Dynasty"], correctAnswer: "Nanda Dynasty" },
+  { id: 59, question: "What is the primary theme of Madhubani paintings?", options: ["Nature and Hindu deities", "Modern cityscapes", "Abstract geometry", "Islamic calligraphy"], correctAnswer: "Nature and Hindu deities" },
+  { id: 60, question: "To which crop is the 'Shahi' variety native in Bihar?", options: ["Mango", "Litchi", "Banana", "Makhana"], correctAnswer: "Litchi" }
+];
+
+
 export const questionSets = [
-  { id: 1, title: "LEVEL 1: THE HERITAGE TRIALS", questions: qPool.slice(0, 10) },
-  { id: 2, title: "LEVEL 2: THE MAURYA MYSTERIES", questions: qPool.slice(10, 20) },
-  { id: 3, title: "LEVEL 3: THE PALA PUZZLES", questions: qPool.slice(20, 30) },
-  { id: 4, title: "LEVEL 4: THE SURI SECRETS", questions: qPool.slice(30, 40) },
-  { id: 5, title: "LEVEL 5: THE MAGADHA MYTHS", questions: qPool.slice(40, 50) },
-  { id: 6, title: "LEVEL 6: THE BODHI TRAILS", questions: qPool.slice(50, 60) },
-  { id: 7, title: "LEVEL 7: THE CULTURAL ECHOES", questions: qPool.slice(60, 70) },
-  { id: 8, title: "LEVEL 8: THE NALANDA CHRONICLES", questions: qPool.slice(70, 80) },
-  { id: 9, title: "LEVEL 9: THE GANGES LEGACIES", questions: qPool.slice(80, 90) },
-  { id: 10, title: "LEVEL 10: THE BIHAR MASTERS", questions: qPool.slice(90, 100) }
+  { id: 1, difficulty: 'easy', title: "LEVEL 1: BIHAR BASICS", questions: easyPool.slice(0, 10) },
+  { id: 2, difficulty: 'easy', title: "LEVEL 2: ICONS & HERITAGE", questions: easyPool.slice(10, 20) },
+  { id: 3, difficulty: 'easy', title: "LEVEL 3: CULTURE & GEOGRAPHY", questions: easyPool.slice(20, 30) },
+  { id: 4, difficulty: 'medium', title: "LEVEL 4: MONUMENTS & LEGACIES", questions: mediumPool.slice(0, 10) },
+  { id: 5, difficulty: 'medium', title: "LEVEL 5: HISTORY DEEP DIVE", questions: mediumPool.slice(10, 20) },
+  { id: 6, difficulty: 'medium', title: "LEVEL 6: ART & RIVERS", questions: mediumPool.slice(20, 30) }
 ];
 
 // Shuffle helper

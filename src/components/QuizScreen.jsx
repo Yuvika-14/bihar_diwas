@@ -124,27 +124,8 @@ const QuizScreen = ({ questions, timePerQuestion = 10, onComplete }) => {
       </div>
 
       {/* Main Area */}
-      <div className="flex flex-col flex-1 min-h-0 items-center justify-start w-full max-w-[1400px] mx-auto pb-4 px-2 md:px-4">
+      <div className="flex flex-col flex-1 min-h-0 items-center justify-center w-full max-w-[1400px] mx-auto pb-4 px-2 md:px-4 mt-8 md:mt-16">
 
-        {/* Image */}
-        <motion.div
-          key={`img-container-${currentQuestion.id}`}
-          initial={{ opacity: 0, scale: 0.95, filter: "blur(5px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative max-w-[90%] sm:max-w-[400px] md:max-w-[500px] max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] mb-2 md:mb-4 lg:mb-6 flex items-center justify-center shrink-0 mx-auto"
-        >
-          <div className="absolute inset-0 bg-premium-accent/10 blur-[50px] rounded-full -z-10"></div>
-
-          <div className="relative inline-block h-full max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] rounded-2xl overflow-hidden shadow-[0_5px_20px_rgba(0,0,0,0.5)]">
-            <img
-              src={currentQuestion.image}
-              alt="Heritage Site"
-              className="w-auto h-full max-h-[20vh] md:max-h-[30vh] lg:max-h-[40vh] object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-premium-900 to-transparent"></div>
-          </div>
-        </motion.div>
 
         {/* Bottom */}
         <div className="w-full flex flex-col justify-end gap-1.5 sm:gap-2 mt-auto relative z-10 shrink-0">
@@ -155,7 +136,7 @@ const QuizScreen = ({ questions, timePerQuestion = 10, onComplete }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="w-full flex justify-center relative"
+            className="w-full flex justify-center relative mb-4 sm:mb-8 md:mb-10"
           >
             <div className="relative w-full max-w-[900px] p-[2px] bg-gradient-to-r from-[#B8860B] via-[#FFE4B5] to-[#B8860B] kbc-clip shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
               <div className="w-full h-full bg-gradient-to-b from-[#0F172A] to-[#1E3A8A] kbc-clip py-1.5 px-4 md:px-8 text-center flex items-center justify-center min-h-[30px] md:min-h-[40px]">

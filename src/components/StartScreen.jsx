@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Play, Link2, CheckCircle2, MousePointerClick, User, Baby, Maximize } from 'lucide-react'
+import { Play, Maximize, Smile, Flame } from 'lucide-react'
 import { GiIndiaGate, GiStarMedal } from 'react-icons/gi'
 import { BsFillLightningFill } from 'react-icons/bs'
 import { useAudio } from '../hooks/useAudio'
@@ -39,12 +39,12 @@ const PARTICLE_CONFIG = Array.from({ length: particleCount }, (_, i) => ({
 const Startscreen = ({ onStart }) => {
   const { click } = useAudio()
   const isIdle = useIdleTimer(20000)
-  const [ageGroup, setAgeGroup] = useState('child')
+  const [difficulty, setDifficulty] = useState('easy')
 
   const handlePlay = (e) => {
     e.stopPropagation()
     click()
-    onStart?.(ageGroup)
+    onStart?.(difficulty)
   }
 
   const toggleFullScreen = (e) => {
@@ -129,31 +129,31 @@ const Startscreen = ({ onStart }) => {
         <Maximize className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
       </div>
 
-      {/* Age Group Toggle (Top Right) */}
+      {/* Difficulty Toggle (Top Right) */}
       <div 
         className="fixed top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-[100] flex items-center gap-3 bg-black/60 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 rounded-full border border-white/20 shadow-[0_5px_30px_rgba(0,0,0,0.5)] cursor-pointer hover:bg-black/50 transition-colors"
-        onClick={(e) => { e.stopPropagation(); click(); setAgeGroup(prev => prev === 'child' ? 'adult' : 'child'); }}
+        onClick={(e) => { e.stopPropagation(); click(); setDifficulty(prev => prev === 'easy' ? 'medium' : 'easy'); }}
       >
-        <div className={`flex items-center gap-1.5 transition-all duration-300 ${ageGroup === 'child' ? 'opacity-100 scale-110' : 'opacity-40 scale-90'}`}>
-          <Baby className={`w-5 h-5 sm:w-6 sm:h-6 ${ageGroup === 'child' ? 'text-green-400' : 'text-white'}`} />
-          <span className={`text-sm sm:text-base font-bold font-orbitron tracking-wider ${ageGroup === 'child' ? 'text-green-400' : 'text-white'}`}>CHILD</span>
+        <div className={`flex items-center gap-1.5 transition-all duration-300 ${difficulty === 'easy' ? 'opacity-100 scale-110' : 'opacity-40 scale-90'}`}>
+          <Smile className={`w-5 h-5 sm:w-6 sm:h-6 ${difficulty === 'easy' ? 'text-blue-400' : 'text-white'}`} />
+          <span className={`text-sm sm:text-base font-bold font-orbitron tracking-wider ${difficulty === 'easy' ? 'text-blue-400' : 'text-white'}`}>EASY</span>
         </div>
         
         <div 
           className="relative w-14 h-7 sm:w-16 sm:h-8 bg-white/10 rounded-full flex items-center px-1 transition-colors mx-1 shrink-0"
-          style={{ backgroundColor: ageGroup === 'adult' ? 'rgba(245, 166, 35, 0.4)' : 'rgba(74, 222, 128, 0.4)' }}
+          style={{ backgroundColor: difficulty === 'medium' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(96, 165, 250, 0.4)' }}
         >
           <motion.div 
             className="w-5 h-5 sm:w-6 sm:h-6 rounded-full shadow-md"
-            style={{ backgroundColor: ageGroup === 'adult' ? '#f5a623' : '#4ade80' }}
-            animate={{ x: ageGroup === 'adult' ? 32 : 0 }}
+            style={{ backgroundColor: difficulty === 'medium' ? '#ef4444' : '#60a5fa' }}
+            animate={{ x: difficulty === 'medium' ? 32 : 0 }}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />
         </div>
 
-        <div className={`flex items-center gap-1.5 transition-all duration-300 ${ageGroup === 'adult' ? 'opacity-100 scale-110' : 'opacity-40 scale-90'}`}>
-          <span className={`text-sm sm:text-base font-bold font-orbitron tracking-wider ${ageGroup === 'adult' ? 'text-yellow-400' : 'text-white'}`}>ADULT</span>
-          <User className={`w-5 h-5 sm:w-6 sm:h-6 ${ageGroup === 'adult' ? 'text-yellow-400' : 'text-white'}`} />
+        <div className={`flex items-center gap-1.5 transition-all duration-300 ${difficulty === 'medium' ? 'opacity-100 scale-110' : 'opacity-40 scale-90'}`}>
+          <span className={`text-sm sm:text-base font-bold font-orbitron tracking-wider ${difficulty === 'medium' ? 'text-red-400' : 'text-white'}`}>MEDIUM</span>
+          <Flame className={`w-5 h-5 sm:w-6 sm:h-6 ${difficulty === 'medium' ? 'text-red-400' : 'text-white'}`} />
         </div>
       </div>
 
